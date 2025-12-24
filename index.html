@@ -824,7 +824,7 @@
                  data-idx="${idx}">
         `;
         
-       card.onclick = (e) => {
+      card.onclick = (e) => {
           if (!isCorrect) {
             const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
             // Prevent blur from clearing focus by setting state first
@@ -848,7 +848,16 @@
             setFocusedCard(currentSetIndex, idx);
           }
         });
-        input.addEventListener('blur', () => removeFocusedCard(currentSetIndex, idx));
+        
+        input.addEventListener('blur', () => {
+          // Use a small delay to allow focus event of new input to fire first
+          setTimeout(() => {
+            // Only remove focus if no new input has taken focus
+            if (currentFocusedInput === `input-${currentSetIndex}-${idx}`) {
+              removeFocusedCard(currentSetIndex, idx);
+            }
+          }, 0);
+        });
       });
       
       document.getElementById('currentSet').textContent = currentSetIndex + 1;
