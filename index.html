@@ -827,8 +827,6 @@
         card.onclick = (e) => {
           if (!isCorrect) {
             const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
-            // Set focused state BEFORE focusing input
-            setFocusedCard(currentSetIndex, idx);
             input.focus();
           } else {
             showCheat(verb.portuguese);
