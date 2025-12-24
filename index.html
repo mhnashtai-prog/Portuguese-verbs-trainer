@@ -824,15 +824,16 @@
                  data-idx="${idx}">
         `;
         
-    card.onclick = (e) => {
+  card.onclick = (e) => {
           if (!isCorrect) {
             const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
+            // Immediately set focus state, then focus the input
+            setFocusedCard(currentSetIndex, idx);
             input.focus();
           } else {
             showCheat(verb.portuguese);
           }
         };
-        
         grid.appendChild(card);
         
         const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
