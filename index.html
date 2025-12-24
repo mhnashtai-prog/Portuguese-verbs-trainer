@@ -193,7 +193,7 @@
       align-items: center;
       gap: 0.625rem;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(84, 84, 88, 0.25);
       position: relative;
@@ -203,6 +203,13 @@
     .verb-card.correct {
       border-color: rgba(52, 199, 89, 0.5);
       box-shadow: 0 8px 32px rgba(52, 199, 89, 0.3);
+      cursor: help;
+    }
+
+    .verb-card.correct:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(52, 199, 89, 0.35);
+      border-color: rgba(52, 199, 89, 0.6);
     }
 
     .verb-card:hover:not(.correct) {
@@ -210,6 +217,12 @@
       box-shadow: 0 12px 40px rgba(201, 169, 97, 0.2),
                   0 0 0 1px rgba(201, 169, 97, 0.3);
       border-color: rgba(201, 169, 97, 0.4);
+    }
+
+    /* FOCUSED STATE - Shows when user is actively typing in this card */
+    .verb-card.focused:not(.correct) {
+      border-color: rgba(201, 169, 97, 0.5);
+      box-shadow: 0 8px 32px rgba(201, 169, 97, 0.25);
     }
 
     .english-word {
@@ -241,6 +254,70 @@
       color: #e5e5e7;
       text-transform: lowercase;
       transition: all 0.2s ease;
+      position: relative;
+    }
+
+    /* Active/Current letter box - shows flashing cursor */
+    .letter-box.active-cursor {
+      border-color: rgba(201, 169, 97, 0.6);
+      background: rgba(201, 169, 97, 0.15);
+    }
+
+    .letter-box.active-cursor::after {
+      content: '';
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 18px;
+      background: #C9A961;
+      animation: cursorBlink 1s step-end infinite;
+    }
+
+    @keyframes cursorBlink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Glow from underneath effect when letter is being typed */
+    .letter-box.filled::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #C9A961, transparent);
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(201, 169, 97, 0.6),
+                  0 0 12px rgba(201, 169, 97, 0.4);
+      animation: glowPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Letter insert animation */
+    .letter-box.just-inserted {
+      animation: letterPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes letterPop {
+      0% {
+        transform: scale(0.8) translateY(-5px);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.15);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .letter-box.peeking {
@@ -338,6 +415,12 @@
       border-radius: 50%;
       background: rgba(84, 84, 88, 0.4);
       transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dot:hover {
+      background: rgba(201, 169, 97, 0.6);
+      transform: scale(1.2);
     }
 
     .dot.active {
@@ -687,6 +770,7 @@
 
     let currentSetIndex = 0;
     let userAnswers = {};
+    let currentFocusedInput = null;
 
     function initApp() {
       document.getElementById('totalSets').textContent = verbsData.length;
@@ -720,6 +804,7 @@
         const key = `${currentSetIndex}-${idx}`;
         const userAnswer = userAnswers[key] || '';
         const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
+        const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
         
         if (isCorrect) {
           card.classList.add('correct');
@@ -729,7 +814,7 @@
           <span class="check-mark">✓</span>
           <div class="english-word">${verb.english}</div>
           <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
-            ${generateLetterBoxes(verb.portuguese, userAnswer, isCorrect)}
+            ${generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, isFocused)}
           </div>
           ${!isCorrect ? `<div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx}, '${verb.portuguese}')">👁</div>` : ''}
           <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
@@ -742,6 +827,8 @@
         card.onclick = (e) => {
           if (!isCorrect) {
             const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
+            // Set focused state BEFORE focusing input
+            setFocusedCard(currentSetIndex, idx);
             input.focus();
           } else {
             showCheat(verb.portuguese);
@@ -752,6 +839,13 @@
         
         const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
         input.addEventListener('input', (e) => handleInput(e, currentSetIndex, idx, verb.portuguese));
+        input.addEventListener('focus', () => {
+          // Only update if not already focused (prevents double update)
+          if (currentFocusedInput !== `input-${currentSetIndex}-${idx}`) {
+            setFocusedCard(currentSetIndex, idx);
+          }
+        });
+        input.addEventListener('blur', () => removeFocusedCard(currentSetIndex, idx));
       });
       
       document.getElementById('currentSet').textContent = currentSetIndex + 1;
@@ -759,10 +853,60 @@
       updateDots();
     }
 
-    function generateLetterBoxes(word, userAnswer, isCorrect) {
+    function setFocusedCard(setIdx, verbIdx) {
+      // Update the focused input tracker
+      currentFocusedInput = `input-${setIdx}-${verbIdx}`;
+      
+      // Update only the letter boxes for all cards to show/hide cursors
+      const currentSet = verbsData[currentSetIndex];
+      currentSet.forEach((verb, idx) => {
+        const key = `${currentSetIndex}-${idx}`;
+        const userAnswer = userAnswers[key] || '';
+        const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
+        const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
+        
+        const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
+        if (letterBoxes) {
+          letterBoxes.innerHTML = generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, isFocused);
+        }
+      });
+    }
+
+    function removeFocusedCard(setIdx, verbIdx) {
+      currentFocusedInput = null;
+      
+      // Update only the letter boxes to remove all cursors
+      const currentSet = verbsData[currentSetIndex];
+      currentSet.forEach((verb, idx) => {
+        const key = `${currentSetIndex}-${idx}`;
+        const userAnswer = userAnswers[key] || '';
+        const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
+        
+        const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
+        if (letterBoxes) {
+          letterBoxes.innerHTML = generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, false);
+        }
+      });
+    }
+
+    function generateLetterBoxes(word, userAnswer, isCorrect, lastInsertedIndex = -1, isFocused = false) {
+      const currentPosition = userAnswer.length; // The index of the next empty box
+      
       return word.split('').map((letter, i) => {
         const userLetter = userAnswer[i] || '';
-        const classes = isCorrect ? 'letter-box correct' : (userLetter ? 'letter-box filled' : 'letter-box');
+        let classes = isCorrect ? 'letter-box correct' : (userLetter ? 'letter-box filled' : 'letter-box');
+        
+        // Add animation class to the letter that was just inserted
+        if (i === lastInsertedIndex) {
+          classes += ' just-inserted';
+        }
+        
+        // Add active cursor ONLY to the NEXT empty box AND only if this card is focused
+        // Only show if: card is focused, not correct, this box is empty, and this is THE next position
+        if (isFocused && !isCorrect && !userLetter && i === currentPosition) {
+          classes += ' active-cursor';
+        }
+        
         return `<div class="${classes}" data-letter="${letter}">${userLetter}</div>`;
       }).join('');
     }
@@ -801,16 +945,29 @@
     function handleInput(e, setIdx, verbIdx, correctAnswer) {
       const value = e.target.value.toLowerCase();
       const key = `${setIdx}-${verbIdx}`;
+      const previousValue = userAnswers[key] || '';
       userAnswers[key] = value;
       
-      const letterBoxes = document.getElementById(`letters-${setIdx}-${verbIdx}`);
-      const isCorrect = value === correctAnswer.toLowerCase();
+      // Determine which letter was just inserted
+      let lastInsertedIndex = -1;
+      if (value.length > previousValue.length) {
+        lastInsertedIndex = value.length - 1;
+      }
       
-      letterBoxes.innerHTML = generateLetterBoxes(correctAnswer, value, isCorrect);
+      const isCorrect = value === correctAnswer.toLowerCase();
+      const isFocused = currentFocusedInput === `input-${setIdx}-${verbIdx}`;
+      
+      // Update THIS card's letter boxes
+      const letterBoxes = document.getElementById(`letters-${setIdx}-${verbIdx}`);
+      if (letterBoxes) {
+        letterBoxes.innerHTML = generateLetterBoxes(correctAnswer, value, isCorrect, lastInsertedIndex, isFocused);
+      }
       
       if (isCorrect) {
         const card = document.getElementById(`card-${setIdx}-${verbIdx}`);
         card.classList.add('correct');
+        card.classList.remove('focused');
+        currentFocusedInput = null;
         setTimeout(() => {
           e.target.blur();
         }, 300);
@@ -863,6 +1020,18 @@
 
     document.getElementById('cheatOverlay').addEventListener('click', () => {
       document.getElementById('cheatOverlay').classList.remove('show');
+    });
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      // If user is typing in an input, don't interfere
+      if (currentFocusedInput) return;
+      
+      if (e.key === 'ArrowRight' && currentSetIndex < verbsData.length - 1) {
+        nextSet();
+      } else if (e.key === 'ArrowLeft' && currentSetIndex > 0) {
+        previousSet();
+      }
     });
 
     initApp();
