@@ -156,12 +156,11 @@
       letter-spacing: 0.05em;
     }
 
-    .peek-icon {
+    .peek-icon, .conjugation-icon {
       font-size: 1rem;
       color: #8e8e93;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-top: 0.375rem;
       user-select: none;
     }
 
@@ -170,8 +169,19 @@
       transform: scale(1.15);
     }
 
-    .peek-icon:active {
+    .conjugation-icon:hover {
+      color: #60a5fa;
+      transform: scale(1.15);
+    }
+
+    .peek-icon:active, .conjugation-icon:active {
       transform: scale(0.95);
+    }
+
+    .icons-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.375rem;
     }
 
     .verbs-grid {
@@ -219,12 +229,6 @@
       border-color: rgba(201, 169, 97, 0.4);
     }
 
-    /* FOCUSED STATE - Shows when user is actively typing in this card */
-    .verb-card.focused:not(.correct) {
-      border-color: rgba(201, 169, 97, 0.5);
-      box-shadow: 0 8px 32px rgba(201, 169, 97, 0.25);
-    }
-
     .english-word {
       font-size: 0.8125rem;
       font-weight: 600;
@@ -257,7 +261,6 @@
       position: relative;
     }
 
-    /* Active/Current letter box - shows flashing cursor */
     .letter-box.active-cursor {
       border-color: rgba(201, 169, 97, 0.6);
       background: rgba(201, 169, 97, 0.15);
@@ -280,7 +283,6 @@
       51%, 100% { opacity: 0; }
     }
 
-    /* Glow from underneath effect when letter is being typed */
     .letter-box.filled::before {
       content: '';
       position: absolute;
@@ -301,7 +303,6 @@
       50% { opacity: 1; }
     }
 
-    /* Letter insert animation */
     .letter-box.just-inserted {
       animation: letterPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -437,6 +438,7 @@
       display: none;
       align-items: center;
       justify-content: center;
+      padding: 1rem;
     }
 
     .modal-overlay.show {
@@ -462,6 +464,114 @@
       color: #C9A961;
       text-transform: lowercase;
       letter-spacing: -0.02em;
+    }
+
+    .conjugation-modal {
+      background: rgba(28, 28, 30, 0.98);
+      backdrop-filter: blur(60px);
+      border: 2px solid rgba(96, 165, 250, 0.4);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+      animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .conjugation-modal .modal-header {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .conjugation-modal .infinitive {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: lowercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .conjugation-modal .english-translation {
+      font-size: 0.875rem;
+      color: #8e8e93;
+      text-transform: lowercase;
+    }
+
+    .conjugation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .conjugation-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.75rem;
+      background: rgba(48, 48, 51, 0.4);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(84, 84, 88, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .conjugation-row:hover {
+      background: rgba(48, 48, 51, 0.6);
+      border-color: rgba(96, 165, 250, 0.3);
+    }
+
+    .pronoun {
+      font-size: 0.8125rem;
+      color: #8e8e93;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .conjugated-form {
+      font-size: 1rem;
+      color: #60a5fa;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .close-conjugation {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: rgba(99, 99, 102, 0.25);
+      border: 1px solid rgba(99, 99, 102, 0.2);
+      color: #8e8e93;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .close-conjugation:hover {
+      background: rgba(99, 99, 102, 0.35);
+      color: #e5e5e7;
+      transform: rotate(90deg);
+    }
+
+    .loading-screen {
+      text-align: center;
+      padding: 3rem;
+      color: #8e8e93;
+    }
+
+    .error-screen {
+      text-align: center;
+      padding: 3rem;
+      color: #fb923c;
     }
 
     @keyframes fadeIn {
@@ -517,9 +627,8 @@
         font-size: 1rem;
       }
 
-      .peek-icon {
+      .peek-icon, .conjugation-icon {
         font-size: 0.9375rem;
-        margin-top: 0.25rem;
       }
 
       .check-mark {
@@ -552,6 +661,28 @@
       .progress-indicator {
         font-size: 0.6875rem;
         margin-bottom: 1rem;
+      }
+
+      .conjugation-modal {
+        padding: 1.5rem;
+      }
+      
+      .conjugation-modal .infinitive {
+        font-size: 1.75rem;
+      }
+      
+      .conjugation-row {
+        grid-template-columns: 100px 1fr;
+        gap: 0.75rem;
+        padding: 0.625rem;
+      }
+      
+      .pronoun {
+        font-size: 0.75rem;
+      }
+      
+      .conjugated-form {
+        font-size: 0.9375rem;
       }
     }
 
@@ -592,6 +723,17 @@
     </div>
   </div>
 
+  <div class="modal-overlay" id="conjugationOverlay">
+    <div class="conjugation-modal">
+      <button class="close-conjugation" onclick="closeConjugationModal()">×</button>
+      <div class="modal-header">
+        <div class="infinitive" id="conjugationInfinitive"></div>
+        <div class="english-translation" id="conjugationEnglish"></div>
+      </div>
+      <div class="conjugation-list" id="conjugationList"></div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="header">
       <h1>INTUITY</h1>
@@ -604,7 +746,9 @@
       SET <span id="currentSet">1</span> OF <span id="totalSets">17</span>
     </div>
 
-    <div class="verbs-grid" id="verbsGrid"></div>
+    <div class="verbs-grid" id="verbsGrid">
+      <div class="loading-screen">Loading verbs...</div>
+    </div>
 
     <div class="navigation">
       <button class="nav-button" id="prevBtn" onclick="previousSet()">← Previous</button>
@@ -614,431 +758,331 @@
   </div>
 
   <script>
-    const verbsData = [
-  // Set 1
-  [
-    { english: 'wash', portuguese: 'lavar' },
-    { english: 'drive', portuguese: 'conduzir' },
-    { english: 'read', portuguese: 'ler' },
-    { english: 'write', portuguese: 'escrever' },
-    { english: 'eat', portuguese: 'comer' },
-    { english: 'drink', portuguese: 'beber' }
-  ],
-  // Set 2
-  [
-    { english: 'sleep', portuguese: 'dormir' },
-    { english: 'run', portuguese: 'correr' },
-    { english: 'walk', portuguese: 'andar' },
-    { english: 'speak', portuguese: 'falar' },
-    { english: 'listen', portuguese: 'ouvir' },
-    { english: 'see', portuguese: 'ver' }
-  ],
-  // Set 3
-  [
-    { english: 'buy', portuguese: 'comprar' },
-    { english: 'sell', portuguese: 'vender' },
-    { english: 'open', portuguese: 'abrir' },
-    { english: 'close', portuguese: 'fechar' },
-    { english: 'start', portuguese: 'começar' },
-    { english: 'finish', portuguese: 'terminar' }
-  ],
-  // Set 4
-  [
-    { english: 'learn', portuguese: 'aprender' },
-    { english: 'teach', portuguese: 'ensinar' },
-    { english: 'study', portuguese: 'estudar' },
-    { english: 'work', portuguese: 'trabalhar' },
-    { english: 'play', portuguese: 'jogar' },
-    { english: 'dance', portuguese: 'dançar' }
-  ],
-  // Set 5
-  [
-    { english: 'sing', portuguese: 'cantar' },
-    { english: 'cry', portuguese: 'chorar' },
-    { english: 'laugh', portuguese: 'rir' },
-    { english: 'smile', portuguese: 'sorrir' },
-    { english: 'think', portuguese: 'pensar' },
-    { english: 'know', portuguese: 'saber' }
-  ],
-  // Set 6
-  [
-    { english: 'want', portuguese: 'querer' },
-    { english: 'need', portuguese: 'precisar' },
-    { english: 'like', portuguese: 'gostar' },
-    { english: 'love', portuguese: 'amar' },
-    { english: 'hate', portuguese: 'odiar' },
-    { english: 'prefer', portuguese: 'preferir' }
-  ],
-  // Set 7
-  [
-    { english: 'give', portuguese: 'dar' },
-    { english: 'take', portuguese: 'tomar' },
-    { english: 'bring', portuguese: 'trazer' },
-    { english: 'carry', portuguese: 'levar' },
-    { english: 'put', portuguese: 'pôr' },
-    { english: 'get', portuguese: 'obter' }
-  ],
-  // Set 8
-  [
-    { english: 'make', portuguese: 'fazer' },
-    { english: 'do', portuguese: 'fazer' },
-    { english: 'create', portuguese: 'criar' },
-    { english: 'build', portuguese: 'construir' },
-    { english: 'destroy', portuguese: 'destruir' },
-    { english: 'break', portuguese: 'quebrar' }
-  ],
-  // Set 9
-  [
-    { english: 'find', portuguese: 'encontrar' },
-    { english: 'lose', portuguese: 'perder' },
-    { english: 'search', portuguese: 'procurar' },
-    { english: 'look', portuguese: 'olhar' },
-    { english: 'watch', portuguese: 'assistir' },
-    { english: 'wait', portuguese: 'esperar' }
-  ],
-  // Set 10
-  [
-    { english: 'arrive', portuguese: 'chegar' },
-    { english: 'leave', portuguese: 'sair' },
-    { english: 'enter', portuguese: 'entrar' },
-    { english: 'exit', portuguese: 'sair' },
-    { english: 'return', portuguese: 'voltar' },
-    { english: 'go', portuguese: 'ir' }
-  ],
-  // Set 11
-  [
-    { english: 'come', portuguese: 'vir' },
-    { english: 'stay', portuguese: 'ficar' },
-    { english: 'live', portuguese: 'viver' },
-    { english: 'die', portuguese: 'morrer' },
-    { english: 'be', portuguese: 'ser' },
-    { english: 'have', portuguese: 'ter' }
-  ],
-  // Set 12
-  [
-    { english: 'say', portuguese: 'dizer' },
-    { english: 'tell', portuguese: 'contar' },
-    { english: 'ask', portuguese: 'perguntar' },
-    { english: 'answer', portuguese: 'responder' },
-    { english: 'call', portuguese: 'chamar' },
-    { english: 'shout', portuguese: 'gritar' }
-  ],
-  // Set 13
-  [
-    { english: 'help', portuguese: 'ajudar' },
-    { english: 'save', portuguese: 'salvar' },
-    { english: 'protect', portuguese: 'proteger' },
-    { english: 'defend', portuguese: 'defender' },
-    { english: 'attack', portuguese: 'atacar' },
-    { english: 'fight', portuguese: 'lutar' }
-  ],
-  // Set 14
-  [
-    { english: 'win', portuguese: 'ganhar' },
-    { english: 'fail', portuguese: 'falhar' },
-    { english: 'try', portuguese: 'tentar' },
-    { english: 'succeed', portuguese: 'conseguir' },
-    { english: 'improve', portuguese: 'melhorar' },
-    { english: 'change', portuguese: 'mudar' }
-  ],
-  // Set 15
-  [
-    { english: 'grow', portuguese: 'crescer' },
-    { english: 'fall', portuguese: 'cair' },
-    { english: 'rise', portuguese: 'subir' },
-    { english: 'climb', portuguese: 'escalar' },
-    { english: 'jump', portuguese: 'saltar' },
-    { english: 'fly', portuguese: 'voar' }
-  ],
-  // Set 16
-  [
-    { english: 'swim', portuguese: 'nadar' },
-    { english: 'cook', portuguese: 'cozinhar' },
-    { english: 'clean', portuguese: 'limpar' },
-    { english: 'wash', portuguese: 'lavar' },
-    { english: 'cut', portuguese: 'cortar' },
-    { english: 'paint', portuguese: 'pintar' }
-  ],
-  // Set 17
-  [
-    { english: 'draw', portuguese: 'desenhar' },
-    { english: 'write', portuguese: 'escrever' },
-    { english: 'remember', portuguese: 'lembrar' },
-    { english: 'forget', portuguese: 'esquecer' }
-  ]
-];
+    let verbsData = [];
+    let currentSetIndex = 0;
+    let userAnswers = {};
+    let currentFocusedInput = null;
 
-let currentSetIndex = 0;
-let userAnswers = {};
-let currentFocusedInput = null;
-
-function initApp() {
-  document.getElementById('totalSets').textContent = verbsData.length;
-  createDots();
-  renderSet();
-}
-
-function createDots() {
-  const container = document.getElementById('dotsContainer');
-  container.innerHTML = '';
-  for (let i = 0; i < verbsData.length; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    if (i === currentSetIndex) dot.classList.add('active');
-    dot.onclick = () => goToSet(i);
-    container.appendChild(dot);
-  }
-}
-
-function renderSet() {
-  const grid = document.getElementById('verbsGrid');
-  grid.innerHTML = '';
-  
-  const currentSet = verbsData[currentSetIndex];
-  
-  currentSet.forEach((verb, idx) => {
-    const card = document.createElement('div');
-    card.className = 'verb-card';
-    card.id = `card-${currentSetIndex}-${idx}`;
-    
-    const key = `${currentSetIndex}-${idx}`;
-    const userAnswer = userAnswers[key] || '';
-    const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
-    
-    if (isCorrect) {
-      card.classList.add('correct');
-    }
-    
-    card.innerHTML = `
-      <span class="check-mark">✓</span>
-      <div class="english-word">${verb.english}</div>
-      <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
-        ${generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, false)}
-      </div>
-      ${!isCorrect ? `<div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx}, '${verb.portuguese}')">👁</div>` : ''}
-      <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
-             maxlength="${verb.portuguese.length}" 
-             value="${userAnswer}"
-             data-answer="${verb.portuguese}"
-             data-idx="${idx}"
-             oninput="handleInputInline(event, ${currentSetIndex}, ${idx}, '${verb.portuguese}')"
-             onfocus="handleFocusInline(${currentSetIndex}, ${idx})"
-             onblur="handleBlurInline(${currentSetIndex}, ${idx})">
-    `;
-    
-    // Simple click handler - just focus!
-    card.onclick = (e) => {
-      if (!isCorrect) {
-        const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
-        input.focus();
-      } else {
-        showCheat(verb.portuguese);
+    async function loadVerbsData() {
+      try {
+        const response = await fetch('portuguese-verbs.json');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to load data: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        verbsData = data.sets;
+        initApp();
+      } catch (error) {
+        console.error('Error loading verbs data:', error);
+        document.getElementById('verbsGrid').innerHTML = `
+          <div class="error-screen">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">⚠️</div>
+            <div>Failed to load Portuguese verbs</div>
+            <div style="font-size: 0.75rem; margin-top: 0.5rem;">${error.message}</div>
+          </div>
+        `;
       }
-    };
-    
-    grid.appendChild(card);
-  });
-  
-  document.getElementById('currentSet').textContent = currentSetIndex + 1;
-  updateNavButtons();
-  updateDots();
-}
-
-// Inline handlers defined globally
-function handleInputInline(e, setIdx, verbIdx, correctAnswer) {
-  handleInput(e, setIdx, verbIdx, correctAnswer);
-}
-
-function handleFocusInline(setIdx, verbIdx) {
-  setFocusedCard(setIdx, verbIdx);
-}
-
-function handleBlurInline(setIdx, verbIdx) {
-  removeFocusedCard(setIdx, verbIdx);
-}
-
-function setFocusedCard(setIdx, verbIdx) {
-  // Update the focused input tracker
-  currentFocusedInput = `input-${setIdx}-${verbIdx}`;
-  
-  // Update only the letter boxes for all cards to show/hide cursors
-  const currentSet = verbsData[currentSetIndex];
-  currentSet.forEach((verb, idx) => {
-    const key = `${currentSetIndex}-${idx}`;
-    const userAnswer = userAnswers[key] || '';
-    const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
-    const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
-    
-    const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
-    if (letterBoxes) {
-      letterBoxes.innerHTML = generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, isFocused);
     }
-  });
-}
 
-function removeFocusedCard(setIdx, verbIdx) {
-  currentFocusedInput = null;
-  
-  // Update only the letter boxes to remove all cursors
-  const currentSet = verbsData[currentSetIndex];
-  currentSet.forEach((verb, idx) => {
-    const key = `${currentSetIndex}-${idx}`;
-    const userAnswer = userAnswers[key] || '';
-    const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
-    
-    const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
-    if (letterBoxes) {
-      letterBoxes.innerHTML = generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, false);
+    function initApp() {
+      document.getElementById('totalSets').textContent = verbsData.length;
+      createDots();
+      renderSet();
     }
-  });
-}
 
-function generateLetterBoxes(word, userAnswer, isCorrect, lastInsertedIndex = -1, isFocused = false) {
-  const currentPosition = userAnswer.length; // The index of the next empty box
-  
-  return word.split('').map((letter, i) => {
-    const userLetter = userAnswer[i] || '';
-    let classes = isCorrect ? 'letter-box correct' : (userLetter ? 'letter-box filled' : 'letter-box');
-    
-    // Add animation class to the letter that was just inserted
-    if (i === lastInsertedIndex) {
-      classes += ' just-inserted';
+    function createDots() {
+      const container = document.getElementById('dotsContainer');
+      container.innerHTML = '';
+      for (let i = 0; i < verbsData.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        if (i === currentSetIndex) dot.classList.add('active');
+        dot.onclick = () => goToSet(i);
+        container.appendChild(dot);
+      }
     }
-    
-    // Add active cursor ONLY to the NEXT empty box AND only if this card is focused
-    // Only show if: card is focused, not correct, this box is empty, and this is THE next position
-    if (isFocused && !isCorrect && !userLetter && i === currentPosition) {
-      classes += ' active-cursor';
-    }
-    
-    return `<div class="${classes}" data-letter="${letter}">${userLetter}</div>`;
-  }).join('');
-}
 
-function peekCard(event, setIdx, verbIdx, correctAnswer) {
-  event.stopPropagation();
-  
-  const letterBoxes = document.querySelectorAll(`#letters-${setIdx}-${verbIdx} .letter-box`);
-  const peekIcon = event.target;
-  
-  // Show the answer
-  letterBoxes.forEach((box, i) => {
-    const letter = correctAnswer[i];
-    box.textContent = letter;
-    box.classList.add('peeking');
-  });
-  
-  // Temporarily hide the eye icon
-  peekIcon.style.opacity = '0';
-  
-  // Hide after 1.5 seconds
-  setTimeout(() => {
-    const key = `${setIdx}-${verbIdx}`;
-    const userAnswer = userAnswers[key] || '';
-    
-    letterBoxes.forEach((box, i) => {
-      const userLetter = userAnswer[i] || '';
-      box.textContent = userLetter;
-      box.classList.remove('peeking');
+    function renderSet() {
+      const grid = document.getElementById('verbsGrid');
+      grid.innerHTML = '';
+      
+      const currentSet = verbsData[currentSetIndex].verbs;
+      
+      currentSet.forEach((verb, idx) => {
+        const card = document.createElement('div');
+        card.className = 'verb-card';
+        card.id = `card-${currentSetIndex}-${idx}`;
+        
+        const key = `${currentSetIndex}-${idx}`;
+        const userAnswer = userAnswers[key] || '';
+        const isCorrect = userAnswer.toLowerCase() === verb.infinitive.toLowerCase();
+        
+        if (isCorrect) {
+          card.classList.add('correct');
+        }
+        
+        card.innerHTML = `
+          <span class="check-mark">✓</span>
+          <div class="english-word">${verb.english}</div>
+          <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
+            ${generateLetterBoxes(verb.infinitive, userAnswer, isCorrect, -1, false)}
+          </div>
+          ${!isCorrect ? `
+            <div class="icons-row">
+              <div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx}, '${verb.infinitive}')">👁</div>
+              <div class="conjugation-icon" onclick="showConjugation(event, ${currentSetIndex}, ${idx})">📖</div>
+            </div>
+          ` : ''}
+          <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
+                 maxlength="${verb.infinitive.length}" 
+                 value="${userAnswer}"
+                 data-answer="${verb.infinitive}"
+                 data-idx="${idx}"
+                 oninput="handleInputInline(event, ${currentSetIndex}, ${idx}, '${verb.infinitive}')"
+                 onfocus="handleFocusInline(${currentSetIndex}, ${idx})"
+                 onblur="handleBlurInline(${currentSetIndex}, ${idx})">
+        `;
+        
+        card.onclick = (e) => {
+          if (!isCorrect) {
+            const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
+            input.focus();
+          } else {
+            showCheat(verb.infinitive);
+          }
+        };
+        
+        grid.appendChild(card);
+      });
+      
+      document.getElementById('currentSet').textContent = currentSetIndex + 1;
+      updateNavButtons();
+      updateDots();
+    }
+
+    function handleInputInline(e, setIdx, verbIdx, correctAnswer) {
+      handleInput(e, setIdx, verbIdx, correctAnswer);
+    }
+
+    function handleFocusInline(setIdx, verbIdx) {
+      setFocusedCard(setIdx, verbIdx);
+    }
+
+    function handleBlurInline(setIdx, verbIdx) {
+      removeFocusedCard(setIdx, verbIdx);
+    }
+
+    function setFocusedCard(setIdx, verbIdx) {
+      currentFocusedInput = `input-${setIdx}-${verbIdx}`;
+      
+      const currentSet = verbsData[currentSetIndex].verbs;
+      currentSet.forEach((verb, idx) => {
+        const key = `${currentSetIndex}-${idx}`;
+        const userAnswer = userAnswers[key] || '';
+        const isCorrect = userAnswer.toLowerCase() === verb.infinitive.toLowerCase();
+        const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
+        
+        const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
+        if (letterBoxes) {
+          letterBoxes.innerHTML = generateLetterBoxes(verb.infinitive, userAnswer, isCorrect, -1, isFocused);
+        }
+      });
+    }
+
+    function removeFocusedCard(setIdx, verbIdx) {
+      currentFocusedInput = null;
+      
+      const currentSet = verbsData[currentSetIndex].verbs;
+      currentSet.forEach((verb, idx) => {
+        const key = `${currentSetIndex}-${idx}`;
+        const userAnswer = userAnswers[key] || '';
+        const isCorrect = userAnswer.toLowerCase() === verb.infinitive.toLowerCase();
+        
+        const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
+        if (letterBoxes) {
+          letterBoxes.innerHTML = generateLetterBoxes(verb.infinitive, userAnswer, isCorrect, -1, false);
+        }
+      });
+    }
+
+    function generateLetterBoxes(word, userAnswer, isCorrect, lastInsertedIndex = -1, isFocused = false) {
+      const currentPosition = userAnswer.length;
+      
+      return word.split('').map((letter, i) => {
+        const userLetter = userAnswer[i] || '';
+        let classes = isCorrect ? 'letter-box correct' : (userLetter ? 'letter-box filled' : 'letter-box');
+        
+        if (i === lastInsertedIndex) {
+          classes += ' just-inserted';
+        }
+        
+        if (isFocused && !isCorrect && !userLetter && i === currentPosition) {
+          classes += ' active-cursor';
+        }
+        
+        return `<div class="${classes}" data-letter="${letter}">${userLetter}</div>`;
+      }).join('');
+    }
+
+    function peekCard(event, setIdx, verbIdx, correctAnswer) {
+      event.stopPropagation();
+      
+      const letterBoxes = document.querySelectorAll(`#letters-${setIdx}-${verbIdx} .letter-box`);
+      const peekIcon = event.target;
+      
+      letterBoxes.forEach((box, i) => {
+        const letter = correctAnswer[i];
+        box.textContent = letter;
+        box.classList.add('peeking');
+      });
+      
+      peekIcon.style.opacity = '0';
+      
+      setTimeout(() => {
+        const key = `${setIdx}-${verbIdx}`;
+        const userAnswer = userAnswers[key] || '';
+        
+        letterBoxes.forEach((box, i) => {
+          const userLetter = userAnswer[i] || '';
+          box.textContent = userLetter;
+          box.classList.remove('peeking');
+        });
+        
+        peekIcon.style.opacity = '1';
+      }, 1500);
+    }
+
+    function showConjugation(event, setIdx, verbIdx) {
+      event.stopPropagation();
+      
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      
+      document.getElementById('conjugationInfinitive').textContent = verb.infinitive;
+      document.getElementById('conjugationEnglish').textContent = `to ${verb.english}`;
+      
+      const listContainer = document.getElementById('conjugationList');
+      listContainer.innerHTML = '';
+      
+      const pronounOrder = ['eu', 'tu', 'ele/ela', 'nós', 'vocês/eles/elas'];
+      
+      pronounOrder.forEach(pronoun => {
+        if (verb.conjugations[pronoun]) {
+          const row = document.createElement('div');
+          row.className = 'conjugation-row';
+          row.innerHTML = `
+            <div class="pronoun">${pronoun}</div>
+            <div class="conjugated-form">${verb.conjugations[pronoun]}</div>
+          `;
+          listContainer.appendChild(row);
+        }
+      });
+      
+      document.getElementById('conjugationOverlay').classList.add('show');
+    }
+
+    function closeConjugationModal() {
+      document.getElementById('conjugationOverlay').classList.remove('show');
+    }
+
+    function handleInput(e, setIdx, verbIdx, correctAnswer) {
+      const value = e.target.value.toLowerCase();
+      const key = `${setIdx}-${verbIdx}`;
+      const previousValue = userAnswers[key] || '';
+      userAnswers[key] = value;
+      
+      let lastInsertedIndex = -1;
+      if (value.length > previousValue.length) {
+        lastInsertedIndex = value.length - 1;
+      }
+      
+      const isCorrect = value === correctAnswer.toLowerCase();
+      const isFocused = currentFocusedInput === `input-${setIdx}-${verbIdx}`;
+      
+      const letterBoxes = document.getElementById(`letters-${setIdx}-${verbIdx}`);
+      if (letterBoxes) {
+        letterBoxes.innerHTML = generateLetterBoxes(correctAnswer, value, isCorrect, lastInsertedIndex, isFocused);
+      }
+      
+      if (isCorrect) {
+        const card = document.getElementById(`card-${setIdx}-${verbIdx}`);
+        card.classList.add('correct');
+        currentFocusedInput = null;
+        setTimeout(() => {
+          e.target.blur();
+        }, 300);
+      }
+    }
+
+    function showCheat(verb) {
+      document.getElementById('cheatVerb').textContent = verb;
+      document.getElementById('cheatOverlay').classList.add('show');
+      
+      setTimeout(() => {
+        document.getElementById('cheatOverlay').classList.remove('show');
+      }, 2000);
+    }
+
+    function nextSet() {
+      if (currentSetIndex < verbsData.length - 1) {
+        currentSetIndex++;
+        renderSet();
+      }
+    }
+
+    function previousSet() {
+      if (currentSetIndex > 0) {
+        currentSetIndex--;
+        renderSet();
+      }
+    }
+
+    function goToSet(idx) {
+      currentSetIndex = idx;
+      renderSet();
+    }
+
+    function updateNavButtons() {
+      document.getElementById('prevBtn').disabled = currentSetIndex === 0;
+      document.getElementById('nextBtn').disabled = currentSetIndex === verbsData.length - 1;
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, i) => {
+        if (i === currentSetIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    document.getElementById('cheatOverlay').addEventListener('click', () => {
+      document.getElementById('cheatOverlay').classList.remove('show');
     });
-    
-    peekIcon.style.opacity = '1';
-  }, 1500);
-}
 
-function handleInput(e, setIdx, verbIdx, correctAnswer) {
-  const value = e.target.value.toLowerCase();
-  const key = `${setIdx}-${verbIdx}`;
-  const previousValue = userAnswers[key] || '';
-  userAnswers[key] = value;
-  
-  // Determine which letter was just inserted
-  let lastInsertedIndex = -1;
-  if (value.length > previousValue.length) {
-    lastInsertedIndex = value.length - 1;
-  }
-  
-  const isCorrect = value === correctAnswer.toLowerCase();
-  const isFocused = currentFocusedInput === `input-${setIdx}-${verbIdx}`;
-  
-  // Update THIS card's letter boxes
-  const letterBoxes = document.getElementById(`letters-${setIdx}-${verbIdx}`);
-  if (letterBoxes) {
-    letterBoxes.innerHTML = generateLetterBoxes(correctAnswer, value, isCorrect, lastInsertedIndex, isFocused);
-  }
-  
-  if (isCorrect) {
-    const card = document.getElementById(`card-${setIdx}-${verbIdx}`);
-    card.classList.add('correct');
-    card.classList.remove('focused');
-    currentFocusedInput = null;
-    setTimeout(() => {
-      e.target.blur();
-    }, 300);
-  }
-}
+    document.getElementById('conjugationOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('conjugationOverlay')) {
+        closeConjugationModal();
+      }
+    });
 
-function showCheat(verb) {
-  document.getElementById('cheatVerb').textContent = verb;
-  document.getElementById('cheatOverlay').classList.add('show');
-  
-  setTimeout(() => {
-    document.getElementById('cheatOverlay').classList.remove('show');
-  }, 2000);
-}
+    document.addEventListener('keydown', (e) => {
+      if (currentFocusedInput) return;
+      
+      if (e.key === 'ArrowRight' && currentSetIndex < verbsData.length - 1) {
+        nextSet();
+      } else if (e.key === 'ArrowLeft' && currentSetIndex > 0) {
+        previousSet();
+      } else if (e.key === 'Escape') {
+        closeConjugationModal();
+        document.getElementById('cheatOverlay').classList.remove('show');
+      }
+    });
 
-function nextSet() {
-  if (currentSetIndex < verbsData.length - 1) {
-    currentSetIndex++;
-    renderSet();
-  }
-}
-
-function previousSet() {
-  if (currentSetIndex > 0) {
-    currentSetIndex--;
-    renderSet();
-  }
-}
-
-function goToSet(idx) {
-  currentSetIndex = idx;
-  renderSet();
-}
-
-function updateNavButtons() {
-  document.getElementById('prevBtn').disabled = currentSetIndex === 0;
-  document.getElementById('nextBtn').disabled = currentSetIndex === verbsData.length - 1;
-}
-
-function updateDots() {
-  const dots = document.querySelectorAll('.dot');
-  dots.forEach((dot, i) => {
-    if (i === currentSetIndex) {
-      dot.classList.add('active');
-    } else {
-      dot.classList.remove('active');
-    }
-  });
-}
-
-document.getElementById('cheatOverlay').addEventListener('click', () => {
-  document.getElementById('cheatOverlay').classList.remove('show');
-});
-
-// Add keyboard navigation
-document.addEventListener('keydown', (e) => {
-  // If user is typing in an input, don't interfere
-  if (currentFocusedInput) return;
-  
-  if (e.key === 'ArrowRight' && currentSetIndex < verbsData.length - 1) {
-    nextSet();
-  } else if (e.key === 'ArrowLeft' && currentSetIndex > 0) {
-    previousSet();
-  }
-});
-
-initApp();
+    window.addEventListener('load', loadVerbsData);
   </script>
 </body>
 </html>
