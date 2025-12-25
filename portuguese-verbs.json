@@ -1,0 +1,1189 @@
+{
+  "sets": [
+    {
+      "id": 1,
+      "verbs": [
+        {
+          "english": "wash",
+          "infinitive": "lavar",
+          "conjugations": {
+            "eu": "lavo",
+            "tu": "lavas",
+            "ele/ela": "lava",
+            "nós": "lavamos",
+            "vocês/eles/elas": "lavam"
+          }
+        },
+        {
+          "english": "drive",
+          "infinitive": "conduzir",
+          "conjugations": {
+            "eu": "conduzo",
+            "tu": "conduzes",
+            "ele/ela": "conduz",
+            "nós": "conduzimos",
+            "vocês/eles/elas": "conduzem"
+          }
+        },
+        {
+          "english": "read",
+          "infinitive": "ler",
+          "conjugations": {
+            "eu": "leio",
+            "tu": "lês",
+            "ele/ela": "lê",
+            "nós": "lemos",
+            "vocês/eles/elas": "leem"
+          }
+        },
+        {
+          "english": "write",
+          "infinitive": "escrever",
+          "conjugations": {
+            "eu": "escrevo",
+            "tu": "escreves",
+            "ele/ela": "escreve",
+            "nós": "escrevemos",
+            "vocês/eles/elas": "escrevem"
+          }
+        },
+        {
+          "english": "eat",
+          "infinitive": "comer",
+          "conjugations": {
+            "eu": "como",
+            "tu": "comes",
+            "ele/ela": "come",
+            "nós": "comemos",
+            "vocês/eles/elas": "comem"
+          }
+        },
+        {
+          "english": "drink",
+          "infinitive": "beber",
+          "conjugations": {
+            "eu": "bebo",
+            "tu": "bebes",
+            "ele/ela": "bebe",
+            "nós": "bebemos",
+            "vocês/eles/elas": "bebem"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "verbs": [
+        {
+          "english": "sleep",
+          "infinitive": "dormir",
+          "conjugations": {
+            "eu": "durmo",
+            "tu": "dormes",
+            "ele/ela": "dorme",
+            "nós": "dormimos",
+            "vocês/eles/elas": "dormem"
+          }
+        },
+        {
+          "english": "run",
+          "infinitive": "correr",
+          "conjugations": {
+            "eu": "corro",
+            "tu": "corres",
+            "ele/ela": "corre",
+            "nós": "corremos",
+            "vocês/eles/elas": "correm"
+          }
+        },
+        {
+          "english": "walk",
+          "infinitive": "andar",
+          "conjugations": {
+            "eu": "ando",
+            "tu": "andas",
+            "ele/ela": "anda",
+            "nós": "andamos",
+            "vocês/eles/elas": "andam"
+          }
+        },
+        {
+          "english": "speak",
+          "infinitive": "falar",
+          "conjugations": {
+            "eu": "falo",
+            "tu": "falas",
+            "ele/ela": "fala",
+            "nós": "falamos",
+            "vocês/eles/elas": "falam"
+          }
+        },
+        {
+          "english": "listen",
+          "infinitive": "ouvir",
+          "conjugations": {
+            "eu": "ouço",
+            "tu": "ouves",
+            "ele/ela": "ouve",
+            "nós": "ouvimos",
+            "vocês/eles/elas": "ouvem"
+          }
+        },
+        {
+          "english": "see",
+          "infinitive": "ver",
+          "conjugations": {
+            "eu": "vejo",
+            "tu": "vês",
+            "ele/ela": "vê",
+            "nós": "vemos",
+            "vocês/eles/elas": "veem"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "verbs": [
+        {
+          "english": "buy",
+          "infinitive": "comprar",
+          "conjugations": {
+            "eu": "compro",
+            "tu": "compras",
+            "ele/ela": "compra",
+            "nós": "compramos",
+            "vocês/eles/elas": "compram"
+          }
+        },
+        {
+          "english": "sell",
+          "infinitive": "vender",
+          "conjugations": {
+            "eu": "vendo",
+            "tu": "vendes",
+            "ele/ela": "vende",
+            "nós": "vendemos",
+            "vocês/eles/elas": "vendem"
+          }
+        },
+        {
+          "english": "open",
+          "infinitive": "abrir",
+          "conjugations": {
+            "eu": "abro",
+            "tu": "abres",
+            "ele/ela": "abre",
+            "nós": "abrimos",
+            "vocês/eles/elas": "abrem"
+          }
+        },
+        {
+          "english": "close",
+          "infinitive": "fechar",
+          "conjugations": {
+            "eu": "fecho",
+            "tu": "fechas",
+            "ele/ela": "fecha",
+            "nós": "fechamos",
+            "vocês/eles/elas": "fecham"
+          }
+        },
+        {
+          "english": "start",
+          "infinitive": "começar",
+          "conjugations": {
+            "eu": "começo",
+            "tu": "começas",
+            "ele/ela": "começa",
+            "nós": "começamos",
+            "vocês/eles/elas": "começam"
+          }
+        },
+        {
+          "english": "finish",
+          "infinitive": "terminar",
+          "conjugations": {
+            "eu": "termino",
+            "tu": "terminas",
+            "ele/ela": "termina",
+            "nós": "terminamos",
+            "vocês/eles/elas": "terminam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "verbs": [
+        {
+          "english": "learn",
+          "infinitive": "aprender",
+          "conjugations": {
+            "eu": "aprendo",
+            "tu": "aprendes",
+            "ele/ela": "aprende",
+            "nós": "aprendemos",
+            "vocês/eles/elas": "aprendem"
+          }
+        },
+        {
+          "english": "teach",
+          "infinitive": "ensinar",
+          "conjugations": {
+            "eu": "ensino",
+            "tu": "ensinas",
+            "ele/ela": "ensina",
+            "nós": "ensinamos",
+            "vocês/eles/elas": "ensinam"
+          }
+        },
+        {
+          "english": "study",
+          "infinitive": "estudar",
+          "conjugations": {
+            "eu": "estudo",
+            "tu": "estudas",
+            "ele/ela": "estuda",
+            "nós": "estudamos",
+            "vocês/eles/elas": "estudam"
+          }
+        },
+        {
+          "english": "work",
+          "infinitive": "trabalhar",
+          "conjugations": {
+            "eu": "trabalho",
+            "tu": "trabalhas",
+            "ele/ela": "trabalha",
+            "nós": "trabalhamos",
+            "vocês/eles/elas": "trabalham"
+          }
+        },
+        {
+          "english": "play",
+          "infinitive": "jogar",
+          "conjugations": {
+            "eu": "jogo",
+            "tu": "jogas",
+            "ele/ela": "joga",
+            "nós": "jogamos",
+            "vocês/eles/elas": "jogam"
+          }
+        },
+        {
+          "english": "dance",
+          "infinitive": "dançar",
+          "conjugations": {
+            "eu": "danço",
+            "tu": "danças",
+            "ele/ela": "dança",
+            "nós": "dançamos",
+            "vocês/eles/elas": "dançam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "verbs": [
+        {
+          "english": "sing",
+          "infinitive": "cantar",
+          "conjugations": {
+            "eu": "canto",
+            "tu": "cantas",
+            "ele/ela": "canta",
+            "nós": "cantamos",
+            "vocês/eles/elas": "cantam"
+          }
+        },
+        {
+          "english": "cry",
+          "infinitive": "chorar",
+          "conjugations": {
+            "eu": "choro",
+            "tu": "choras",
+            "ele/ela": "chora",
+            "nós": "choramos",
+            "vocês/eles/elas": "choram"
+          }
+        },
+        {
+          "english": "laugh",
+          "infinitive": "rir",
+          "conjugations": {
+            "eu": "rio",
+            "tu": "ris",
+            "ele/ela": "ri",
+            "nós": "rimos",
+            "vocês/eles/elas": "riem"
+          }
+        },
+        {
+          "english": "smile",
+          "infinitive": "sorrir",
+          "conjugations": {
+            "eu": "sorrio",
+            "tu": "sorris",
+            "ele/ela": "sorri",
+            "nós": "sorrimos",
+            "vocês/eles/elas": "sorriem"
+          }
+        },
+        {
+          "english": "think",
+          "infinitive": "pensar",
+          "conjugations": {
+            "eu": "penso",
+            "tu": "pensas",
+            "ele/ela": "pensa",
+            "nós": "pensamos",
+            "vocês/eles/elas": "pensam"
+          }
+        },
+        {
+          "english": "know",
+          "infinitive": "saber",
+          "conjugations": {
+            "eu": "sei",
+            "tu": "sabes",
+            "ele/ela": "sabe",
+            "nós": "sabemos",
+            "vocês/eles/elas": "sabem"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "verbs": [
+        {
+          "english": "want",
+          "infinitive": "querer",
+          "conjugations": {
+            "eu": "quero",
+            "tu": "queres",
+            "ele/ela": "quer",
+            "nós": "queremos",
+            "vocês/eles/elas": "querem"
+          }
+        },
+        {
+          "english": "need",
+          "infinitive": "precisar",
+          "conjugations": {
+            "eu": "preciso",
+            "tu": "precisas",
+            "ele/ela": "precisa",
+            "nós": "precisamos",
+            "vocês/eles/elas": "precisam"
+          }
+        },
+        {
+          "english": "like",
+          "infinitive": "gostar",
+          "conjugations": {
+            "eu": "gosto",
+            "tu": "gostas",
+            "ele/ela": "gosta",
+            "nós": "gostamos",
+            "vocês/eles/elas": "gostam"
+          }
+        },
+        {
+          "english": "love",
+          "infinitive": "amar",
+          "conjugations": {
+            "eu": "amo",
+            "tu": "amas",
+            "ele/ela": "ama",
+            "nós": "amamos",
+            "vocês/eles/elas": "amam"
+          }
+        },
+        {
+          "english": "hate",
+          "infinitive": "odiar",
+          "conjugations": {
+            "eu": "odeio",
+            "tu": "odeias",
+            "ele/ela": "odeia",
+            "nós": "odiamos",
+            "vocês/eles/elas": "odeiam"
+          }
+        },
+        {
+          "english": "prefer",
+          "infinitive": "preferir",
+          "conjugations": {
+            "eu": "prefiro",
+            "tu": "preferes",
+            "ele/ela": "prefere",
+            "nós": "preferimos",
+            "vocês/eles/elas": "preferem"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "verbs": [
+        {
+          "english": "give",
+          "infinitive": "dar",
+          "conjugations": {
+            "eu": "dou",
+            "tu": "dás",
+            "ele/ela": "dá",
+            "nós": "damos",
+            "vocês/eles/elas": "dão"
+          }
+        },
+        {
+          "english": "take",
+          "infinitive": "tomar",
+          "conjugations": {
+            "eu": "tomo",
+            "tu": "tomas",
+            "ele/ela": "toma",
+            "nós": "tomamos",
+            "vocês/eles/elas": "tomam"
+          }
+        },
+        {
+          "english": "bring",
+          "infinitive": "trazer",
+          "conjugations": {
+            "eu": "trago",
+            "tu": "trazes",
+            "ele/ela": "traz",
+            "nós": "trazemos",
+            "vocês/eles/elas": "trazem"
+          }
+        },
+        {
+          "english": "carry",
+          "infinitive": "levar",
+          "conjugations": {
+            "eu": "levo",
+            "tu": "levas",
+            "ele/ela": "leva",
+            "nós": "levamos",
+            "vocês/eles/elas": "levam"
+          }
+        },
+        {
+          "english": "put",
+          "infinitive": "pôr",
+          "conjugations": {
+            "eu": "ponho",
+            "tu": "pões",
+            "ele/ela": "põe",
+            "nós": "pomos",
+            "vocês/eles/elas": "põem"
+          }
+        },
+        {
+          "english": "get",
+          "infinitive": "obter",
+          "conjugations": {
+            "eu": "obtenho",
+            "tu": "obténs",
+            "ele/ela": "obtém",
+            "nós": "obtemos",
+            "vocês/eles/elas": "obtêm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "verbs": [
+        {
+          "english": "make",
+          "infinitive": "fazer",
+          "conjugations": {
+            "eu": "faço",
+            "tu": "fazes",
+            "ele/ela": "faz",
+            "nós": "fazemos",
+            "vocês/eles/elas": "fazem"
+          }
+        },
+        {
+          "english": "do",
+          "infinitive": "fazer",
+          "conjugations": {
+            "eu": "faço",
+            "tu": "fazes",
+            "ele/ela": "faz",
+            "nós": "fazemos",
+            "vocês/eles/elas": "fazem"
+          }
+        },
+        {
+          "english": "create",
+          "infinitive": "criar",
+          "conjugations": {
+            "eu": "crio",
+            "tu": "crias",
+            "ele/ela": "cria",
+            "nós": "criamos",
+            "vocês/eles/elas": "criam"
+          }
+        },
+        {
+          "english": "build",
+          "infinitive": "construir",
+          "conjugations": {
+            "eu": "construo",
+            "tu": "constróis",
+            "ele/ela": "constrói",
+            "nós": "construímos",
+            "vocês/eles/elas": "constroem"
+          }
+        },
+        {
+          "english": "destroy",
+          "infinitive": "destruir",
+          "conjugations": {
+            "eu": "destruo",
+            "tu": "destróis",
+            "ele/ela": "destrói",
+            "nós": "destruímos",
+            "vocês/eles/elas": "destroem"
+          }
+        },
+        {
+          "english": "break",
+          "infinitive": "quebrar",
+          "conjugations": {
+            "eu": "quebro",
+            "tu": "quebras",
+            "ele/ela": "quebra",
+            "nós": "quebramos",
+            "vocês/eles/elas": "quebram"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "verbs": [
+        {
+          "english": "find",
+          "infinitive": "encontrar",
+          "conjugations": {
+            "eu": "encontro",
+            "tu": "encontras",
+            "ele/ela": "encontra",
+            "nós": "encontramos",
+            "vocês/eles/elas": "encontram"
+          }
+        },
+        {
+          "english": "lose",
+          "infinitive": "perder",
+          "conjugations": {
+            "eu": "perco",
+            "tu": "perdes",
+            "ele/ela": "perde",
+            "nós": "perdemos",
+            "vocês/eles/elas": "perdem"
+          }
+        },
+        {
+          "english": "search",
+          "infinitive": "procurar",
+          "conjugations": {
+            "eu": "procuro",
+            "tu": "procuras",
+            "ele/ela": "procura",
+            "nós": "procuramos",
+            "vocês/eles/elas": "procuram"
+          }
+        },
+        {
+          "english": "look",
+          "infinitive": "olhar",
+          "conjugations": {
+            "eu": "olho",
+            "tu": "olhas",
+            "ele/ela": "olha",
+            "nós": "olhamos",
+            "vocês/eles/elas": "olham"
+          }
+        },
+        {
+          "english": "watch",
+          "infinitive": "assistir",
+          "conjugations": {
+            "eu": "assisto",
+            "tu": "assistes",
+            "ele/ela": "assiste",
+            "nós": "assistimos",
+            "vocês/eles/elas": "assistem"
+          }
+        },
+        {
+          "english": "wait",
+          "infinitive": "esperar",
+          "conjugations": {
+            "eu": "espero",
+            "tu": "esperas",
+            "ele/ela": "espera",
+            "nós": "esperamos",
+            "vocês/eles/elas": "esperam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "verbs": [
+        {
+          "english": "arrive",
+          "infinitive": "chegar",
+          "conjugations": {
+            "eu": "chego",
+            "tu": "chegas",
+            "ele/ela": "chega",
+            "nós": "chegamos",
+            "vocês/eles/elas": "chegam"
+          }
+        },
+        {
+          "english": "leave",
+          "infinitive": "sair",
+          "conjugations": {
+            "eu": "saio",
+            "tu": "sais",
+            "ele/ela": "sai",
+            "nós": "saímos",
+            "vocês/eles/elas": "saem"
+          }
+        },
+        {
+          "english": "enter",
+          "infinitive": "entrar",
+          "conjugations": {
+            "eu": "entro",
+            "tu": "entras",
+            "ele/ela": "entra",
+            "nós": "entramos",
+            "vocês/eles/elas": "entram"
+          }
+        },
+        {
+          "english": "exit",
+          "infinitive": "sair",
+          "conjugations": {
+            "eu": "saio",
+            "tu": "sais",
+            "ele/ela": "sai",
+            "nós": "saímos",
+            "vocês/eles/elas": "saem"
+          }
+        },
+        {
+          "english": "return",
+          "infinitive": "voltar",
+          "conjugations": {
+            "eu": "volto",
+            "tu": "voltas",
+            "ele/ela": "volta",
+            "nós": "voltamos",
+            "vocês/eles/elas": "voltam"
+          }
+        },
+        {
+          "english": "go",
+          "infinitive": "ir",
+          "conjugations": {
+            "eu": "vou",
+            "tu": "vais",
+            "ele/ela": "vai",
+            "nós": "vamos",
+            "vocês/eles/elas": "vão"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "verbs": [
+        {
+          "english": "come",
+          "infinitive": "vir",
+          "conjugations": {
+            "eu": "venho",
+            "tu": "vens",
+            "ele/ela": "vem",
+            "nós": "vimos",
+            "vocês/eles/elas": "vêm"
+          }
+        },
+        {
+          "english": "stay",
+          "infinitive": "ficar",
+          "conjugations": {
+            "eu": "fico",
+            "tu": "ficas",
+            "ele/ela": "fica",
+            "nós": "ficamos",
+            "vocês/eles/elas": "ficam"
+          }
+        },
+        {
+          "english": "live",
+          "infinitive": "viver",
+          "conjugations": {
+            "eu": "vivo",
+            "tu": "vives",
+            "ele/ela": "vive",
+            "nós": "vivemos",
+            "vocês/eles/elas": "vivem"
+          }
+        },
+        {
+          "english": "die",
+          "infinitive": "morrer",
+          "conjugations": {
+            "eu": "morro",
+            "tu": "morres",
+            "ele/ela": "morre",
+            "nós": "morremos",
+            "vocês/eles/elas": "morrem"
+          }
+        },
+        {
+          "english": "be",
+          "infinitive": "ser",
+          "conjugations": {
+            "eu": "sou",
+            "tu": "és",
+            "ele/ela": "é",
+            "nós": "somos",
+            "vocês/eles/elas": "são"
+          }
+        },
+        {
+          "english": "have",
+          "infinitive": "ter",
+          "conjugations": {
+            "eu": "tenho",
+            "tu": "tens",
+            "ele/ela": "tem",
+            "nós": "temos",
+            "vocês/eles/elas": "têm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "verbs": [
+        {
+          "english": "say",
+          "infinitive": "dizer",
+          "conjugations": {
+            "eu": "digo",
+            "tu": "dizes",
+            "ele/ela": "diz",
+            "nós": "dizemos",
+            "vocês/eles/elas": "dizem"
+          }
+        },
+        {
+          "english": "tell",
+          "infinitive": "contar",
+          "conjugations": {
+            "eu": "conto",
+            "tu": "contas",
+            "ele/ela": "conta",
+            "nós": "contamos",
+            "vocês/eles/elas": "contam"
+          }
+        },
+        {
+          "english": "ask",
+          "infinitive": "perguntar",
+          "conjugations": {
+            "eu": "pergunto",
+            "tu": "perguntas",
+            "ele/ela": "pergunta",
+            "nós": "perguntamos",
+            "vocês/eles/elas": "perguntam"
+          }
+        },
+        {
+          "english": "answer",
+          "infinitive": "responder",
+          "conjugations": {
+            "eu": "respondo",
+            "tu": "respondes",
+            "ele/ela": "responde",
+            "nós": "respondemos",
+            "vocês/eles/elas": "respondem"
+          }
+        },
+        {
+          "english": "call",
+          "infinitive": "chamar",
+          "conjugations": {
+            "eu": "chamo",
+            "tu": "chamas",
+            "ele/ela": "chama",
+            "nós": "chamamos",
+            "vocês/eles/elas": "chamam"
+          }
+        },
+        {
+          "english": "shout",
+          "infinitive": "gritar",
+          "conjugations": {
+            "eu": "grito",
+            "tu": "gritas",
+            "ele/ela": "grita",
+            "nós": "gritamos",
+            "vocês/eles/elas": "gritam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "verbs": [
+        {
+          "english": "help",
+          "infinitive": "ajudar",
+          "conjugations": {
+            "eu": "ajudo",
+            "tu": "ajudas",
+            "ele/ela": "ajuda",
+            "nós": "ajudamos",
+            "vocês/eles/elas": "ajudam"
+          }
+        },
+        {
+          "english": "save",
+          "infinitive": "salvar",
+          "conjugations": {
+            "eu": "salvo",
+            "tu": "salvas",
+            "ele/ela": "salva",
+            "nós": "salvamos",
+            "vocês/eles/elas": "salvam"
+          }
+        },
+        {
+          "english": "protect",
+          "infinitive": "proteger",
+          "conjugations": {
+            "eu": "protejo",
+            "tu": "proteges",
+            "ele/ela": "protege",
+            "nós": "protegemos",
+            "vocês/eles/elas": "protegem"
+          }
+        },
+        {
+          "english": "defend",
+          "infinitive": "defender",
+          "conjugations": {
+            "eu": "defendo",
+            "tu": "defendes",
+            "ele/ela": "defende",
+            "nós": "defendemos",
+            "vocês/eles/elas": "defendem"
+          }
+        },
+        {
+          "english": "attack",
+          "infinitive": "atacar",
+          "conjugations": {
+            "eu": "ataco",
+            "tu": "atacas",
+            "ele/ela": "ataca",
+            "nós": "atacamos",
+            "vocês/eles/elas": "atacam"
+          }
+        },
+        {
+          "english": "fight",
+          "infinitive": "lutar",
+          "conjugations": {
+            "eu": "luto",
+            "tu": "lutas",
+            "ele/ela": "luta",
+            "nós": "lutamos",
+            "vocês/eles/elas": "lutam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "verbs": [
+        {
+          "english": "win",
+          "infinitive": "ganhar",
+          "conjugations": {
+            "eu": "ganho",
+            "tu": "ganhas",
+            "ele/ela": "ganha",
+            "nós": "ganhamos",
+            "vocês/eles/elas": "ganham"
+          }
+        },
+        {
+          "english": "fail",
+          "infinitive": "falhar",
+          "conjugations": {
+            "eu": "falho",
+            "tu": "falhas",
+            "ele/ela": "falha",
+            "nós": "falhamos",
+            "vocês/eles/elas": "falham"
+          }
+        },
+        {
+          "english": "try",
+          "infinitive": "tentar",
+          "conjugations": {
+            "eu": "tento",
+            "tu": "tentas",
+            "ele/ela": "tenta",
+            "nós": "tentamos",
+            "vocês/eles/elas": "tentam"
+          }
+        },
+        {
+          "english": "succeed",
+          "infinitive": "conseguir",
+          "conjugations": {
+            "eu": "consigo",
+            "tu": "consegues",
+            "ele/ela": "consegue",
+            "nós": "conseguimos",
+            "vocês/eles/elas": "conseguem"
+          }
+        },
+        {
+          "english": "improve",
+          "infinitive": "melhorar",
+          "conjugations": {
+            "eu": "melhoro",
+            "tu": "melhoras",
+            "ele/ela": "melhora",
+            "nós": "melhoramos",
+            "vocês/eles/elas": "melhoram"
+          }
+        },
+        {
+          "english": "change",
+          "infinitive": "mudar",
+          "conjugations": {
+            "eu": "mudo",
+            "tu": "mudas",
+            "ele/ela": "muda",
+            "nós": "mudamos",
+            "vocês/eles/elas": "mudam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "verbs": [
+        {
+          "english": "grow",
+          "infinitive": "crescer",
+          "conjugations": {
+            "eu": "cresço",
+            "tu": "cresces",
+            "ele/ela": "cresce",
+            "nós": "crescemos",
+            "vocês/eles/elas": "crescem"
+          }
+        },
+        {
+          "english": "fall",
+          "infinitive": "cair",
+          "conjugations": {
+            "eu": "caio",
+            "tu": "cais",
+            "ele/ela": "cai",
+            "nós": "caímos",
+            "vocês/eles/elas": "caem"
+          }
+        },
+        {
+          "english": "rise",
+          "infinitive": "subir",
+          "conjugations": {
+            "eu": "subo",
+            "tu": "sobes",
+            "ele/ela": "sobe",
+            "nós": "subimos",
+            "vocês/eles/elas": "sobem"
+          }
+        },
+        {
+          "english": "climb",
+          "infinitive": "escalar",
+          "conjugations": {
+            "eu": "escalo",
+            "tu": "escalas",
+            "ele/ela": "escala",
+            "nós": "escalamos",
+            "vocês/eles/elas": "escalam"
+          }
+        },
+        {
+          "english": "jump",
+          "infinitive": "saltar",
+          "conjugations": {
+            "eu": "salto",
+            "tu": "saltas",
+            "ele/ela": "salta",
+            "nós": "saltamos",
+            "vocês/eles/elas": "saltam"
+          }
+        },
+        {
+          "english": "fly",
+          "infinitive": "voar",
+          "conjugations": {
+            "eu": "voo",
+            "tu": "voas",
+            "ele/ela": "voa",
+            "nós": "voamos",
+            "vocês/eles/elas": "voam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "verbs": [
+        {
+          "english": "swim",
+          "infinitive": "nadar",
+          "conjugations": {
+            "eu": "nado",
+            "tu": "nadas",
+            "ele/ela": "nada",
+            "nós": "nadamos",
+            "vocês/eles/elas": "nadam"
+          }
+        },
+        {
+          "english": "cook",
+          "infinitive": "cozinhar",
+          "conjugations": {
+            "eu": "cozinho",
+            "tu": "cozinhas",
+            "ele/ela": "cozinha",
+            "nós": "cozinhamos",
+            "vocês/eles/elas": "cozinham"
+          }
+        },
+        {
+          "english": "clean",
+          "infinitive": "limpar",
+          "conjugations": {
+            "eu": "limpo",
+            "tu": "limpas",
+            "ele/ela": "limpa",
+            "nós": "limpamos",
+            "vocês/eles/elas": "limpam"
+          }
+        },
+        {
+          "english": "wash",
+          "infinitive": "lavar",
+          "conjugations": {
+            "eu": "lavo",
+            "tu": "lavas",
+            "ele/ela": "lava",
+            "nós": "lavamos",
+            "vocês/eles/elas": "lavam"
+          }
+        },
+        {
+          "english": "cut",
+          "infinitive": "cortar",
+          "conjugations": {
+            "eu": "corto",
+            "tu": "cortas",
+            "ele/ela": "corta",
+            "nós": "cortamos",
+            "vocês/eles/elas": "cortam"
+          }
+        },
+        {
+          "english": "paint",
+          "infinitive": "pintar",
+          "conjugations": {
+            "eu": "pinto",
+            "tu": "pintas",
+            "ele/ela": "pinta",
+            "nós": "pintamos",
+            "vocês/eles/elas": "pintam"
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "verbs": [
+        {
+          "english": "draw",
+          "infinitive": "desenhar",
+          "conjugations": {
+            "eu": "desenho",
+            "tu": "desenhas",
+            "ele/ela": "desenha",
+            "nós": "desenhamos",
+            "vocês/eles/elas": "desenham"
+          }
+        },
+        {
+          "english": "write",
+          "infinitive": "escrever",
+          "conjugations": {
+            "eu": "escrevo",
+            "tu": "escreves",
+            "ele/ela": "escreve",
+            "nós": "escrevemos",
+            "vocês/eles/elas": "escrevem"
+          }
+        },
+        {
+          "english": "remember",
+          "infinitive": "lembrar",
+          "conjugations": {
+            "eu": "lembro",
+            "tu": "lembras",
+            "ele/ela": "lembra",
+            "nós": "lembramos",
+            "vocês/eles/elas": "lembram"
+          }
+        },
+        {
+          "english": "forget",
+          "infinitive": "esquecer",
+          "conjugations": {
+            "eu": "esqueço",
+            "tu": "esqueces",
+            "ele/ela": "esquece",
+            "nós": "esquecemos",
+            "vocês/eles/elas": "esquecem"
+          }
+        }
+      ]
+    }
+  ]
+}
