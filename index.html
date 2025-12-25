@@ -790,78 +790,84 @@
       }
     }
 
-    function renderSet() {
-      const grid = document.getElementById('verbsGrid');
-      grid.innerHTML = '';
-      
-      const currentSet = verbsData[currentSetIndex];
-      
-      currentSet.forEach((verb, idx) => {
-        const card = document.createElement('div');
-        card.className = 'verb-card';
-        card.id = `card-${currentSetIndex}-${idx}`;
-        
-        const key = `${currentSetIndex}-${idx}`;
-        const userAnswer = userAnswers[key] || '';
-        const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
-        const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
-        
-        if (isCorrect) {
-          card.classList.add('correct');
-        }
-        
-        card.innerHTML = `
-          <span class="check-mark">✓</span>
-          <div class="english-word">${verb.english}</div>
-          <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
-            ${generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, isFocused)}
-          </div>
-          ${!isCorrect ? `<div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx}, '${verb.portuguese}')">👁</div>` : ''}
-          <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
-                 maxlength="${verb.portuguese.length}" 
-                 value="${userAnswer}"
-                 data-answer="${verb.portuguese}"
-                 data-idx="${idx}">
-        `;
-        
-     card.onclick = (e) => {
-          if (!isCorrect) {
-            const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
-            
-            // Always set focus state first, then focus
-            setFocusedCard(currentSetIndex, idx);
-            input.focus();
-          } else {
-            showCheat(verb.portuguese);
-          }
-        };
-        
-        grid.appendChild(card);
-        
-        const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
-        input.addEventListener('input', (e) => handleInput(e, currentSetIndex, idx, verb.portuguese));
-        input.addEventListener('focus', () => {
-          // Only update if not already focused (prevents double update)
-          if (currentFocusedInput !== `input-${currentSetIndex}-${idx}`) {
-            setFocusedCard(currentSetIndex, idx);
-          }
-        });
-        
-        input.addEventListener('blur', () => {
-          // Use a small delay to allow focus event of new input to fire first
-          setTimeout(() => {
-            // Only remove focus if no new input has taken focus
-            if (currentFocusedInput === `input-${currentSetIndex}-${idx}`) {
-              removeFocusedCard(currentSetIndex, idx);
-            }
-          }, 0);
-        });
-      });
-      
-      document.getElementById('currentSet').textContent = currentSetIndex + 1;
-      updateNavButtons();
-      updateDots();
+   function renderSet() {
+  const grid = document.getElementById('verbsGrid');
+  grid.innerHTML = '';
+  
+  const currentSet = verbsData[currentSetIndex];
+  
+  currentSet.forEach((verb, idx) => {
+    const card = document.createElement('div');
+    card.className = 'verb-card';
+    card.id = `card-${currentSetIndex}-${idx}`;
+    
+    const key = `${currentSetIndex}-${idx}`;
+    const userAnswer = userAnswers[key] || '';
+    const isCorrect = userAnswer.toLowerCase() === verb.portuguese.toLowerCase();
+    const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
+    
+    if (isCorrect) {
+      card.classList.add('correct');
     }
+    
+    card.innerHTML = `
+      <span class="check-mark">✓</span>
+      <div class="english-word">${verb.english}</div>
+      <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
+        ${generateLetterBoxes(verb.portuguese, userAnswer, isCorrect, -1, isFocused)}
+      </div>
+      ${!isCorrect ? `<div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx}, '${verb.portuguese}')">👁</div>` : ''}
+      <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
+             maxlength="${verb.portuguese.length}" 
+             value="${userAnswer}"
+             data-answer="${verb.portuguese}"
+             data-idx="${idx}">
+    `;
+    
+    card.onclick = (e) => {
+      if (!isCorrect) {
+        const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
+        
+        // Set focus state BEFORE focusing the input to prevent double-update
+        setFocusedCard(currentSetIndex, idx);
+        
+        // Use a microtask to ensure focus happens after the DOM update
+        Promise.resolve().then(() => {
+          input.focus();
+        });
+      } else {
+        showCheat(verb.portuguese);
+      }
+    };
+    
+    grid.appendChild(card);
+    
+    const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
+    
+    // Input event for typing
+    input.addEventListener('input', (e) => handleInput(e, currentSetIndex, idx, verb.portuguese));
+    
+    // Focus event - only update if not already focused (prevents double update on click)
+    input.addEventListener('focus', () => {
+      if (currentFocusedInput !== `input-${currentSetIndex}-${idx}`) {
+        setFocusedCard(currentSetIndex, idx);
+      }
+    });
+    
+    // Blur event - remove focus state when input loses focus
+    input.addEventListener('blur', () => {
+      setTimeout(() => {
+        if (currentFocusedInput === `input-${currentSetIndex}-${idx}`) {
+          removeFocusedCard(currentSetIndex, idx);
+        }
+      }, 0);
+    });
+  });
+  
+  document.getElementById('currentSet').textContent = currentSetIndex + 1;
+  updateNavButtons();
+  updateDots();
+}
 
     function setFocusedCard(setIdx, verbIdx) {
       // Update the focused input tracker
