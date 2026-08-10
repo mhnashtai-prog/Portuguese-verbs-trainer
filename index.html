@@ -1016,10 +1016,11 @@
     let currentFocusedInput = null;
     let direction = 'en-pt'; // 'en-pt' = see English, type Portuguese. 'pt-en' = see Portuguese, type English.
     let activeModalCard = null; // { setIdx, verbIdx }
+    const DATA_VERSION = '2'; // bump this whenever portuguese-verbs.json changes, to bust the browser/CDN cache
 
     async function loadVerbsData() {
       try {
-        const response = await fetch('portuguese-verbs.json');
+        const response = await fetch(`portuguese-verbs.json?v=${DATA_VERSION}`, { cache: 'no-cache' });
         
         if (!response.ok) {
           throw new Error(`Failed to load data: ${response.status}`);
