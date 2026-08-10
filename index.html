@@ -557,6 +557,155 @@
       position: relative;
     }
 
+    /* --- Expanded card modal --- */
+    .card-modal-overlay {
+      align-items: flex-end;
+    }
+
+    @media (min-width: 560px) {
+      .card-modal-overlay {
+        align-items: center;
+      }
+    }
+
+    .card-modal {
+      background: #000000;
+      backdrop-filter: blur(60px) saturate(150%);
+      -webkit-backdrop-filter: blur(60px) saturate(150%);
+      border: 1px solid rgba(84, 84, 88, 0.3);
+      border-radius: 1.5rem 1.5rem 0 0;
+      padding: 2.25rem 1.5rem 2.5rem;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .card-modal-overlay.show .card-modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (min-width: 560px) {
+      .card-modal {
+        border-radius: 1.5rem;
+        padding: 2.5rem 2rem;
+      }
+    }
+
+    .card-modal.correct {
+      border-color: rgba(52, 199, 89, 0.5);
+      box-shadow: 0 -10px 60px rgba(52, 199, 89, 0.25), 0 0 0 1px rgba(52, 199, 89, 0.3);
+    }
+
+    .card-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: rgba(99, 99, 102, 0.25);
+      border: 1px solid rgba(99, 99, 102, 0.2);
+      color: #8e8e93;
+      font-size: 1.375rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .card-modal-close:hover {
+      background: rgba(99, 99, 102, 0.35);
+      color: #e5e5e7;
+      transform: rotate(90deg);
+    }
+
+    .card-modal-drag-handle {
+      width: 36px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(142, 142, 147, 0.4);
+      margin: 0 auto 1.5rem;
+    }
+
+    @media (min-width: 560px) {
+      .card-modal-drag-handle {
+        display: none;
+      }
+    }
+
+    .card-modal .modal-check-mark {
+      font-size: 2.5rem;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin-bottom: 0.5rem;
+      height: 0;
+    }
+
+    .card-modal.correct .modal-check-mark {
+      opacity: 1;
+      transform: scale(1);
+      height: auto;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-modal .modal-prompt-word {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #C9A961;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.75rem;
+    }
+
+    .card-modal .modal-letter-boxes {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+      min-height: 64px;
+    }
+
+    .card-modal .letter-box {
+      width: 42px;
+      height: 56px;
+      font-size: 1.625rem;
+      border-radius: 0.625rem;
+    }
+
+    @media (max-width: 380px) {
+      .card-modal .letter-box {
+        width: 36px;
+        height: 50px;
+        font-size: 1.375rem;
+      }
+    }
+
+    .card-modal .icons-row {
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .card-modal .peek-icon,
+    .card-modal .conjugation-icon {
+      font-size: 1.375rem;
+      padding: 0.5rem;
+    }
+    /* --- end expanded card modal --- */
+
+    #conjugationOverlay {
+      z-index: 1000;
+    }
+
     .conjugation-modal .modal-header {
       margin-bottom: 1.5rem;
       text-align: center;
@@ -812,6 +961,22 @@
     </div>
   </div>
 
+  <div class="modal-overlay card-modal-overlay" id="cardModalOverlay">
+    <div class="card-modal" id="cardModal">
+      <button class="card-modal-close" onclick="closeCardModal()">×</button>
+      <div class="card-modal-drag-handle"></div>
+      <div class="modal-check-mark" id="modalCheckMark">✓</div>
+      <div class="modal-prompt-word" id="modalPromptWord"></div>
+      <div class="modal-letter-boxes" id="modalLetterBoxes"></div>
+      <div class="icons-row" id="modalIconsRow">
+        <div class="peek-icon" onclick="peekModal(event)">👁</div>
+        <div class="conjugation-icon" onclick="showConjugation(event, activeModalCard.setIdx, activeModalCard.verbIdx)">📖</div>
+      </div>
+      <input type="text" class="hidden-input" id="modalInput"
+             oninput="handleModalInput(event)">
+    </div>
+  </div>
+
   <div class="container">
     <div class="header">
       <h1>INTUITY</h1>
@@ -850,6 +1015,7 @@
     let userAnswers = {};
     let currentFocusedInput = null;
     let direction = 'en-pt'; // 'en-pt' = see English, type Portuguese. 'pt-en' = see Portuguese, type English.
+    let activeModalCard = null; // { setIdx, verbIdx }
 
     async function loadVerbsData() {
       try {
@@ -967,8 +1133,7 @@
         
         card.onclick = (e) => {
           if (!isCorrect) {
-            const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
-            input.focus();
+            openCardModal(currentSetIndex, idx);
           } else {
             showCheat(answerWord);
           }
@@ -1141,6 +1306,112 @@
       }
     }
 
+    // --- Expanded card modal ---
+    function openCardModal(setIdx, verbIdx) {
+      activeModalCard = { setIdx, verbIdx };
+      renderModalContent();
+
+      const overlay = document.getElementById('cardModalOverlay');
+      overlay.classList.add('show');
+
+      // Focus after the slide-in animation starts so mobile keyboards open smoothly
+      setTimeout(() => {
+        const input = document.getElementById('modalInput');
+        input.value = '';
+        input.focus();
+      }, 100);
+    }
+
+    function closeCardModal() {
+      const overlay = document.getElementById('cardModalOverlay');
+      overlay.classList.remove('show');
+      document.getElementById('modalInput').blur();
+      activeModalCard = null;
+      currentFocusedInput = null;
+      renderSet();
+    }
+
+    function renderModalContent() {
+      if (!activeModalCard) return;
+      const { setIdx, verbIdx } = activeModalCard;
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const key = `${direction}-${setIdx}-${verbIdx}`;
+      const userAnswer = userAnswers[key] || '';
+      const promptWord = getPrompt(verb);
+      const answerWord = getAnswer(verb);
+      const isCorrect = userAnswer.toLowerCase() === answerWord.toLowerCase();
+
+      document.getElementById('modalPromptWord').textContent = promptWord;
+      document.getElementById('modalLetterBoxes').innerHTML =
+        generateLetterBoxes(answerWord, userAnswer, isCorrect, -1, true);
+      document.getElementById('modalIconsRow').style.display = isCorrect ? 'none' : 'flex';
+      document.getElementById('cardModal').classList.toggle('correct', isCorrect);
+
+      const input = document.getElementById('modalInput');
+      input.maxLength = answerWord.length;
+      input.value = userAnswer;
+    }
+
+    function handleModalInput(e) {
+      if (!activeModalCard) return;
+      const { setIdx, verbIdx } = activeModalCard;
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const answerWord = getAnswer(verb);
+      const key = `${direction}-${setIdx}-${verbIdx}`;
+
+      const value = e.target.value.toLowerCase();
+      const previousValue = userAnswers[key] || '';
+      userAnswers[key] = value;
+
+      let lastInsertedIndex = -1;
+      if (value.length > previousValue.length) {
+        lastInsertedIndex = value.length - 1;
+      }
+
+      const isCorrect = value === answerWord.toLowerCase();
+
+      document.getElementById('modalLetterBoxes').innerHTML =
+        generateLetterBoxes(answerWord, value, isCorrect, lastInsertedIndex, true);
+      document.getElementById('modalIconsRow').style.display = isCorrect ? 'none' : 'flex';
+      document.getElementById('cardModal').classList.toggle('correct', isCorrect);
+
+      if (isCorrect) {
+        e.target.blur();
+        setTimeout(() => {
+          closeCardModal();
+        }, 700);
+      }
+    }
+
+    function peekModal(event) {
+      event.stopPropagation();
+      if (!activeModalCard) return;
+      const { setIdx, verbIdx } = activeModalCard;
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const answerWord = getAnswer(verb);
+      const key = `${direction}-${setIdx}-${verbIdx}`;
+
+      const letterBoxes = document.querySelectorAll('#modalLetterBoxes .letter-box');
+      const peekIcon = event.target;
+
+      letterBoxes.forEach((box, i) => {
+        box.textContent = answerWord[i];
+        box.classList.add('peeking');
+      });
+
+      peekIcon.style.opacity = '0';
+
+      setTimeout(() => {
+        const userAnswer = userAnswers[key] || '';
+        letterBoxes.forEach((box, i) => {
+          box.textContent = userAnswer[i] || '';
+          box.classList.remove('peeking');
+        });
+        peekIcon.style.opacity = '1';
+      }, 1500);
+    }
+    // --- end expanded card modal ---
+
     function showCheat(verb) {
       document.getElementById('cheatVerb').textContent = verb;
       document.getElementById('cheatOverlay').classList.add('show');
@@ -1195,16 +1466,26 @@
       }
     });
 
+    document.getElementById('cardModalOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('cardModalOverlay')) {
+        closeCardModal();
+      }
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (currentFocusedInput) return;
+      if (e.key === 'Escape') {
+        closeConjugationModal();
+        document.getElementById('cheatOverlay').classList.remove('show');
+        if (activeModalCard) closeCardModal();
+        return;
+      }
+
+      if (currentFocusedInput || activeModalCard) return;
       
       if (e.key === 'ArrowRight' && currentSetIndex < verbsData.length - 1) {
         nextSet();
       } else if (e.key === 'ArrowLeft' && currentSetIndex > 0) {
         previousSet();
-      } else if (e.key === 'Escape') {
-        closeConjugationModal();
-        document.getElementById('cheatOverlay').classList.remove('show');
       }
     });
 
