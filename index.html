@@ -1250,21 +1250,24 @@
       
       const verb = verbsData[setIdx].verbs[verbIdx];
       
-      document.getElementById('conjugationInfinitive').textContent = verb.infinitive;
-      document.getElementById('conjugationEnglish').textContent = `to ${verb.english}`;
+      document.getElementById('conjugationInfinitive').textContent =
+        direction === 'en-pt' ? verb.infinitive : verb.english;
+      document.getElementById('conjugationEnglish').textContent =
+        direction === 'en-pt' ? `to ${verb.english}` : `pt: ${verb.infinitive}`;
       
       const listContainer = document.getElementById('conjugationList');
       listContainer.innerHTML = '';
       
       const pronounOrder = ['eu', 'tu', 'ele/ela', 'nós', 'vocês/eles/elas'];
+      const conjugationSet = direction === 'en-pt' ? verb.conjugations : verb.conjugations_en;
       
       pronounOrder.forEach(pronoun => {
-        if (verb.conjugations[pronoun]) {
+        if (conjugationSet && conjugationSet[pronoun]) {
           const row = document.createElement('div');
           row.className = 'conjugation-row';
           row.innerHTML = `
             <div class="pronoun">${pronoun}</div>
-            <div class="conjugated-form">${verb.conjugations[pronoun]}</div>
+            <div class="conjugated-form">${conjugationSet[pronoun]}</div>
           `;
           listContainer.appendChild(row);
         }
