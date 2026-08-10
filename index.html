@@ -147,6 +147,84 @@
       letter-spacing: 0.02em;
     }
 
+    /* --- Direction toggle --- */
+    .direction-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      margin-top: 0.75rem;
+    }
+
+    .toggle-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #636366;
+      transition: color 0.25s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-label.active {
+      color: #C9A961;
+      text-shadow: 0 0 12px rgba(201, 169, 97, 0.4);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .switch .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(28, 28, 30, 0.8);
+      border: 1px solid rgba(84, 84, 88, 0.35);
+      border-radius: 999px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .switch .slider::before {
+      content: '';
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background: #e5e5e7;
+      border-radius: 50%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .switch input:checked + .slider {
+      background: rgba(201, 169, 97, 0.35);
+      border-color: rgba(201, 169, 97, 0.6);
+    }
+
+    .switch input:checked + .slider::before {
+      transform: translateX(20px);
+      background: #C9A961;
+      box-shadow: 0 2px 8px rgba(201, 169, 97, 0.6);
+    }
+
+    .switch:hover .slider {
+      border-color: rgba(201, 169, 97, 0.5);
+    }
+    /* --- end direction toggle --- */
+
     .progress-indicator {
       text-align: center;
       font-size: 0.75rem;
@@ -740,6 +818,15 @@
       <p class="subtitle">Intuitive & Immersive Learning</p>
       <p class="author">Majid Nashtai</p>
       <p class="subtitle">Portuguese Verbs Trainer</p>
+
+      <div class="direction-toggle">
+        <span class="toggle-label active" id="labelLeft" onclick="setDirection('en-pt')">EN → PT</span>
+        <label class="switch">
+          <input type="checkbox" id="directionSwitch" onchange="handleSwitchChange(event)">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label" id="labelRight" onclick="setDirection('pt-en')">PT → EN</span>
+      </div>
     </div>
 
     <div class="progress-indicator">
@@ -762,6 +849,7 @@
     let currentSetIndex = 0;
     let userAnswers = {};
     let currentFocusedInput = null;
+    let direction = 'en-pt'; // 'en-pt' = see English, type Portuguese. 'pt-en' = see Portuguese, type English.
 
     async function loadVerbsData() {
       try {
@@ -792,6 +880,37 @@
       renderSet();
     }
 
+    // --- direction toggle helpers ---
+    function getPrompt(verb) {
+      return direction === 'en-pt' ? verb.english : verb.infinitive;
+    }
+
+    function getAnswer(verb) {
+      return direction === 'en-pt' ? verb.infinitive : verb.english;
+    }
+
+    function setDirection(newDirection) {
+      if (direction === newDirection) return;
+      direction = newDirection;
+      document.getElementById('directionSwitch').checked = (direction === 'pt-en');
+      updateToggleLabels();
+      currentFocusedInput = null;
+      renderSet();
+    }
+
+    function handleSwitchChange(e) {
+      direction = e.target.checked ? 'pt-en' : 'en-pt';
+      updateToggleLabels();
+      currentFocusedInput = null;
+      renderSet();
+    }
+
+    function updateToggleLabels() {
+      document.getElementById('labelLeft').classList.toggle('active', direction === 'en-pt');
+      document.getElementById('labelRight').classList.toggle('active', direction === 'pt-en');
+    }
+    // --- end direction toggle helpers ---
+
     function createDots() {
       const container = document.getElementById('dotsContainer');
       container.innerHTML = '';
@@ -815,9 +934,11 @@
         card.className = 'verb-card';
         card.id = `card-${currentSetIndex}-${idx}`;
         
-        const key = `${currentSetIndex}-${idx}`;
+        const key = `${direction}-${currentSetIndex}-${idx}`;
         const userAnswer = userAnswers[key] || '';
-        const isCorrect = userAnswer.toLowerCase() === verb.infinitive.toLowerCase();
+        const promptWord = getPrompt(verb);
+        const answerWord = getAnswer(verb);
+        const isCorrect = userAnswer.toLowerCase() === answerWord.toLowerCase();
         
         if (isCorrect) {
           card.classList.add('correct');
@@ -825,22 +946,21 @@
         
         card.innerHTML = `
           <span class="check-mark">✓</span>
-          <div class="english-word">${verb.english}</div>
+          <div class="english-word">${promptWord}</div>
           <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
-            ${generateLetterBoxes(verb.infinitive, userAnswer, isCorrect, -1, false)}
+            ${generateLetterBoxes(answerWord, userAnswer, isCorrect, -1, false)}
           </div>
           ${!isCorrect ? `
             <div class="icons-row">
-              <div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx}, '${verb.infinitive}')">👁</div>
+              <div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx})">👁</div>
               <div class="conjugation-icon" onclick="showConjugation(event, ${currentSetIndex}, ${idx})">📖</div>
             </div>
           ` : ''}
           <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
-                 maxlength="${verb.infinitive.length}" 
+                 maxlength="${answerWord.length}" 
                  value="${userAnswer}"
-                 data-answer="${verb.infinitive}"
                  data-idx="${idx}"
-                 oninput="handleInputInline(event, ${currentSetIndex}, ${idx}, '${verb.infinitive}')"
+                 oninput="handleInputInline(event, ${currentSetIndex}, ${idx})"
                  onfocus="handleFocusInline(${currentSetIndex}, ${idx})"
                  onblur="handleBlurInline(${currentSetIndex}, ${idx})">
         `;
@@ -850,7 +970,7 @@
             const input = document.getElementById(`input-${currentSetIndex}-${idx}`);
             input.focus();
           } else {
-            showCheat(verb.infinitive);
+            showCheat(answerWord);
           }
         };
         
@@ -862,8 +982,9 @@
       updateDots();
     }
 
-    function handleInputInline(e, setIdx, verbIdx, correctAnswer) {
-      handleInput(e, setIdx, verbIdx, correctAnswer);
+    function handleInputInline(e, setIdx, verbIdx) {
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      handleInput(e, setIdx, verbIdx, getAnswer(verb));
     }
 
     function handleFocusInline(setIdx, verbIdx) {
@@ -879,14 +1000,15 @@
       
       const currentSet = verbsData[currentSetIndex].verbs;
       currentSet.forEach((verb, idx) => {
-        const key = `${currentSetIndex}-${idx}`;
+        const key = `${direction}-${currentSetIndex}-${idx}`;
         const userAnswer = userAnswers[key] || '';
-        const isCorrect = userAnswer.toLowerCase() === verb.infinitive.toLowerCase();
+        const answerWord = getAnswer(verb);
+        const isCorrect = userAnswer.toLowerCase() === answerWord.toLowerCase();
         const isFocused = currentFocusedInput === `input-${currentSetIndex}-${idx}`;
         
         const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
         if (letterBoxes) {
-          letterBoxes.innerHTML = generateLetterBoxes(verb.infinitive, userAnswer, isCorrect, -1, isFocused);
+          letterBoxes.innerHTML = generateLetterBoxes(answerWord, userAnswer, isCorrect, -1, isFocused);
         }
       });
     }
@@ -896,13 +1018,14 @@
       
       const currentSet = verbsData[currentSetIndex].verbs;
       currentSet.forEach((verb, idx) => {
-        const key = `${currentSetIndex}-${idx}`;
+        const key = `${direction}-${currentSetIndex}-${idx}`;
         const userAnswer = userAnswers[key] || '';
-        const isCorrect = userAnswer.toLowerCase() === verb.infinitive.toLowerCase();
+        const answerWord = getAnswer(verb);
+        const isCorrect = userAnswer.toLowerCase() === answerWord.toLowerCase();
         
         const letterBoxes = document.getElementById(`letters-${currentSetIndex}-${idx}`);
         if (letterBoxes) {
-          letterBoxes.innerHTML = generateLetterBoxes(verb.infinitive, userAnswer, isCorrect, -1, false);
+          letterBoxes.innerHTML = generateLetterBoxes(answerWord, userAnswer, isCorrect, -1, false);
         }
       });
     }
@@ -926,8 +1049,11 @@
       }).join('');
     }
 
-    function peekCard(event, setIdx, verbIdx, correctAnswer) {
+    function peekCard(event, setIdx, verbIdx) {
       event.stopPropagation();
+      
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const correctAnswer = getAnswer(verb);
       
       const letterBoxes = document.querySelectorAll(`#letters-${setIdx}-${verbIdx} .letter-box`);
       const peekIcon = event.target;
@@ -941,7 +1067,7 @@
       peekIcon.style.opacity = '0';
       
       setTimeout(() => {
-        const key = `${setIdx}-${verbIdx}`;
+        const key = `${direction}-${setIdx}-${verbIdx}`;
         const userAnswer = userAnswers[key] || '';
         
         letterBoxes.forEach((box, i) => {
@@ -988,7 +1114,7 @@
 
     function handleInput(e, setIdx, verbIdx, correctAnswer) {
       const value = e.target.value.toLowerCase();
-      const key = `${setIdx}-${verbIdx}`;
+      const key = `${direction}-${setIdx}-${verbIdx}`;
       const previousValue = userAnswers[key] || '';
       userAnswers[key] = value;
       
