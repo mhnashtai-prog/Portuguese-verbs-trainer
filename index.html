@@ -429,6 +429,54 @@
       color: #34c759;
     }
 
+    .letter-box.wrong {
+      background: rgba(255, 92, 92, 0.16);
+      border-color: rgba(255, 92, 92, 0.55);
+      color: #ff8080;
+      animation: wrongPulse 0.35s ease;
+    }
+
+    @keyframes wrongPulse {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes gentleShake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-3px); }
+      80% { transform: translateX(3px); }
+    }
+
+    .card-modal.wrong-shake {
+      animation: gentleShake 0.4s ease;
+    }
+
+    .modal-wrong-mark {
+      font-size: 2.5rem;
+      color: #ff5c5c;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin-bottom: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .modal-wrong-mark.show {
+      opacity: 1;
+      transform: scale(1);
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .verb-card.wrong-shake {
+      animation: gentleShake 0.4s ease;
+    }
+
+
     .check-mark {
       position: absolute;
       top: 0.625rem;
@@ -567,7 +615,7 @@
       align-items: flex-end;
       height: 100vh;
       height: 100dvh;
-      background: rgba(13, 11, 8, 0.72);
+      background: rgba(58, 52, 42, 0.82);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
@@ -579,18 +627,16 @@
     }
 
     .card-modal {
-      background: radial-gradient(circle at 25% -10%, rgba(201, 169, 97, 0.14) 0%, transparent 55%),
-                  radial-gradient(circle at 90% 110%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
-                  #0d0d0d;
+      background: #000000;
       backdrop-filter: blur(60px) saturate(150%);
       -webkit-backdrop-filter: blur(60px) saturate(150%);
-      border: 1px solid rgba(201, 169, 97, 0.22);
+      border: 1px solid rgba(201, 169, 97, 0.3);
       border-radius: 1.5rem 1.5rem 0 0;
       padding: 2.25rem 1.5rem calc(2.5rem + env(safe-area-inset-bottom));
       width: 100%;
       max-width: 440px;
       text-align: center;
-      box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.4);
       position: relative;
       transform: translateY(30px);
       opacity: 0;
@@ -1001,6 +1047,7 @@
       <button class="card-modal-close" onclick="event.stopPropagation(); closeCardModal()">×</button>
       <div class="card-modal-drag-handle"></div>
       <div class="modal-check-mark" id="modalCheckMark">✓</div>
+      <div class="modal-wrong-mark" id="modalWrongMark">✗</div>
       <div class="modal-prompt-word" id="modalPromptWord"></div>
       <div class="modal-letter-boxes" id="modalLetterBoxes"></div>
       <div class="icons-row" id="modalIconsRow">
@@ -1233,12 +1280,12 @@
       });
     }
 
-    function generateLetterBoxes(word, userAnswer, isCorrect, lastInsertedIndex = -1, isFocused = false) {
+    function generateLetterBoxes(word, userAnswer, isCorrect, lastInsertedIndex = -1, isFocused = false, isWrong = false) {
       const currentPosition = userAnswer.length;
       
       return word.split('').map((letter, i) => {
         const userLetter = userAnswer[i] || '';
-        let classes = isCorrect ? 'letter-box correct' : (userLetter ? 'letter-box filled' : 'letter-box');
+        let classes = isCorrect ? 'letter-box correct' : (isWrong ? 'letter-box wrong' : (userLetter ? 'letter-box filled' : 'letter-box'));
         
         if (i === lastInsertedIndex) {
           classes += ' just-inserted';
@@ -1358,11 +1405,12 @@
       }
       
       const isCorrect = value === correctAnswer.toLowerCase();
+      const isFullyTypedWrong = !isCorrect && value.length > 0 && value.length === correctAnswer.length;
       const isFocused = currentFocusedInput === `input-${setIdx}-${verbIdx}`;
       
       const letterBoxes = document.getElementById(`letters-${setIdx}-${verbIdx}`);
       if (letterBoxes) {
-        letterBoxes.innerHTML = generateLetterBoxes(correctAnswer, value, isCorrect, lastInsertedIndex, isFocused);
+        letterBoxes.innerHTML = generateLetterBoxes(correctAnswer, value, isCorrect, lastInsertedIndex, isFocused, isFullyTypedWrong);
       }
       
       if (isCorrect) {
@@ -1372,6 +1420,23 @@
         setTimeout(() => {
           e.target.blur();
         }, 300);
+        return;
+      }
+
+      if (isFullyTypedWrong) {
+        const card = document.getElementById(`card-${setIdx}-${verbIdx}`);
+        if (card) card.classList.add('wrong-shake');
+        playGentleWrongSound();
+
+        setTimeout(() => {
+          if (card) card.classList.remove('wrong-shake');
+          if (userAnswers[key] === value) {
+            userAnswers[key] = '';
+            e.target.value = '';
+            const lb = document.getElementById(`letters-${setIdx}-${verbIdx}`);
+            if (lb) lb.innerHTML = generateLetterBoxes(correctAnswer, '', false, -1, isFocused);
+          }
+        }, 650);
       }
     }
 
@@ -1459,6 +1524,30 @@
       input.value = userAnswer;
     }
 
+    function playGentleWrongSound() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(340, now);
+        osc.frequency.exponentialRampToValueAtTime(220, now + 0.2);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(0.09, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.28);
+        osc.onended = () => ctx.close();
+      } catch (err) {
+        // Web Audio unavailable — fail silently, the visual cue still shows
+      }
+    }
+
     function handleModalInput(e) {
       if (!activeModalCard) return;
       const { setIdx, verbIdx } = activeModalCard;
@@ -1476,13 +1565,37 @@
       }
 
       const isCorrect = value === answerWord.toLowerCase();
+      const isFullyTypedWrong = !isCorrect && value.length > 0 && value.length === answerWord.length;
 
       document.getElementById('modalLetterBoxes').innerHTML =
-        generateLetterBoxes(answerWord, value, isCorrect, lastInsertedIndex, true);
+        generateLetterBoxes(answerWord, value, isCorrect, lastInsertedIndex, true, isFullyTypedWrong);
       document.getElementById('cardModal').classList.toggle('correct', isCorrect);
 
       if (isCorrect) {
         e.target.blur();
+        return;
+      }
+
+      if (isFullyTypedWrong) {
+        const modal = document.getElementById('cardModal');
+        const wrongMark = document.getElementById('modalWrongMark');
+        modal.classList.add('wrong-shake');
+        wrongMark.classList.add('show');
+        playGentleWrongSound();
+
+        setTimeout(() => {
+          modal.classList.remove('wrong-shake');
+          wrongMark.classList.remove('show');
+
+          // Only clear if the user hasn't already started a fresh attempt
+          if (activeModalCard && activeModalCard.setIdx === setIdx && activeModalCard.verbIdx === verbIdx
+              && userAnswers[key] === value) {
+            userAnswers[key] = '';
+            e.target.value = '';
+            document.getElementById('modalLetterBoxes').innerHTML =
+              generateLetterBoxes(answerWord, '', false, -1, true);
+          }
+        }, 650);
       }
     }
 
