@@ -567,6 +567,9 @@
       align-items: flex-end;
       height: 100vh;
       height: 100dvh;
+      background: rgba(13, 11, 8, 0.72);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
     }
 
     @media (min-width: 560px) {
@@ -576,10 +579,12 @@
     }
 
     .card-modal {
-      background: #000000;
+      background: radial-gradient(circle at 25% -10%, rgba(201, 169, 97, 0.14) 0%, transparent 55%),
+                  radial-gradient(circle at 90% 110%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
+                  #0d0d0d;
       backdrop-filter: blur(60px) saturate(150%);
       -webkit-backdrop-filter: blur(60px) saturate(150%);
-      border: 1px solid rgba(84, 84, 88, 0.3);
+      border: 1px solid rgba(201, 169, 97, 0.22);
       border-radius: 1.5rem 1.5rem 0 0;
       padding: 2.25rem 1.5rem calc(2.5rem + env(safe-area-inset-bottom));
       width: 100%;
@@ -1410,6 +1415,15 @@
     }
 
     function focusModalInput() {
+      if (!activeModalCard) return;
+      const { setIdx, verbIdx } = activeModalCard;
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const answerWord = getAnswer(verb);
+      const key = `${direction}-${setIdx}-${verbIdx}`;
+      const userAnswer = userAnswers[key] || '';
+      const isCorrect = userAnswer.toLowerCase() === answerWord.toLowerCase();
+      if (isCorrect) return; // don't pop the keyboard back up once they're done — let them review
+
       const input = document.getElementById('modalInput');
       if (input) input.focus({ preventScroll: true });
     }
@@ -1469,9 +1483,6 @@
 
       if (isCorrect) {
         e.target.blur();
-        setTimeout(() => {
-          closeCardModal();
-        }, 700);
       }
     }
 
