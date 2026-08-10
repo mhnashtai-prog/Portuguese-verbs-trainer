@@ -234,7 +234,7 @@
       letter-spacing: 0.05em;
     }
 
-    .peek-icon, .conjugation-icon {
+    .peek-icon, .conjugation-icon, .reset-icon {
       font-size: 1rem;
       color: #8e8e93;
       cursor: pointer;
@@ -252,7 +252,12 @@
       transform: scale(1.15);
     }
 
-    .peek-icon:active, .conjugation-icon:active {
+    .reset-icon:hover {
+      color: #fb923c;
+      transform: scale(1.15) rotate(-45deg);
+    }
+
+    .peek-icon:active, .conjugation-icon:active, .reset-icon:active {
       transform: scale(0.95);
     }
 
@@ -698,7 +703,8 @@
     }
 
     .card-modal .peek-icon,
-    .card-modal .conjugation-icon {
+    .card-modal .conjugation-icon,
+    .card-modal .reset-icon {
       font-size: 1.375rem;
       padding: 0.5rem;
     }
@@ -995,6 +1001,7 @@
       <div class="icons-row" id="modalIconsRow">
         <div class="peek-icon" onclick="peekModal(event)">👁</div>
         <div class="conjugation-icon" onclick="showConjugation(event, activeModalCard.setIdx, activeModalCard.verbIdx)">📖</div>
+        <div class="reset-icon" onclick="resetModalAttempt(event)">↺</div>
       </div>
       <input type="text" class="modal-input" id="modalInput"
              autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
@@ -1143,12 +1150,11 @@
           <div class="letter-boxes" id="letters-${currentSetIndex}-${idx}">
             ${generateLetterBoxes(answerWord, userAnswer, isCorrect, -1, false)}
           </div>
-          ${!isCorrect ? `
-            <div class="icons-row">
-              <div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx})">👁</div>
-              <div class="conjugation-icon" onclick="showConjugation(event, ${currentSetIndex}, ${idx})">📖</div>
-            </div>
-          ` : ''}
+          <div class="icons-row">
+            <div class="peek-icon" onclick="peekCard(event, ${currentSetIndex}, ${idx})">👁</div>
+            <div class="conjugation-icon" onclick="showConjugation(event, ${currentSetIndex}, ${idx})">📖</div>
+            <div class="reset-icon" onclick="resetCard(event, ${currentSetIndex}, ${idx})">↺</div>
+          </div>
           <input type="text" class="hidden-input" id="input-${currentSetIndex}-${idx}" 
                  maxlength="${answerWord.length}" 
                  value="${userAnswer}"
@@ -1239,6 +1245,26 @@
         
         return `<div class="${classes}" data-letter="${letter}">${userLetter}</div>`;
       }).join('');
+    }
+
+    function resetCard(event, setIdx, verbIdx) {
+      event.stopPropagation();
+
+      const key = `${direction}-${setIdx}-${verbIdx}`;
+      delete userAnswers[key];
+
+      const card = document.getElementById(`card-${setIdx}-${verbIdx}`);
+      if (card) card.classList.remove('correct');
+
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const answerWord = getAnswer(verb);
+      const letterBoxes = document.getElementById(`letters-${setIdx}-${verbIdx}`);
+      if (letterBoxes) {
+        letterBoxes.innerHTML = generateLetterBoxes(answerWord, '', false, -1, false);
+      }
+
+      const input = document.getElementById(`input-${setIdx}-${verbIdx}`);
+      if (input) input.value = '';
     }
 
     function peekCard(event, setIdx, verbIdx) {
@@ -1345,17 +1371,42 @@
     }
 
     // --- Expanded card modal ---
+    function syncCardModalViewport() {
+      const overlay = document.getElementById('cardModalOverlay');
+      if (!overlay) return;
+      if (window.visualViewport) {
+        const vv = window.visualViewport;
+        overlay.style.top = vv.offsetTop + 'px';
+        overlay.style.height = vv.height + 'px';
+      }
+    }
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', syncCardModalViewport);
+      window.visualViewport.addEventListener('scroll', syncCardModalViewport);
+    }
+
     function openCardModal(setIdx, verbIdx) {
       activeModalCard = { setIdx, verbIdx };
       renderModalContent();
 
       const overlay = document.getElementById('cardModalOverlay');
       overlay.classList.add('show');
+      syncCardModalViewport();
 
       // Focus synchronously (not in a timeout) — mobile browsers only open the
       // virtual keyboard when .focus() runs inside the original tap's call stack.
       const input = document.getElementById('modalInput');
       input.focus({ preventScroll: true });
+
+      // The keyboard animates in over the next few hundred ms on iOS, shrinking
+      // visualViewport in steps — keep re-syncing while that settles.
+      let syncCount = 0;
+      const settleInterval = setInterval(() => {
+        syncCardModalViewport();
+        syncCount++;
+        if (syncCount > 10) clearInterval(settleInterval);
+      }, 50);
     }
 
     function focusModalInput() {
@@ -1366,6 +1417,8 @@
     function closeCardModal() {
       const overlay = document.getElementById('cardModalOverlay');
       overlay.classList.remove('show');
+      overlay.style.top = '';
+      overlay.style.height = '';
       document.getElementById('modalInput').blur();
       activeModalCard = null;
       currentFocusedInput = null;
@@ -1385,7 +1438,6 @@
       document.getElementById('modalPromptWord').textContent = promptWord;
       document.getElementById('modalLetterBoxes').innerHTML =
         generateLetterBoxes(answerWord, userAnswer, isCorrect, -1, true);
-      document.getElementById('modalIconsRow').style.display = isCorrect ? 'none' : 'flex';
       document.getElementById('cardModal').classList.toggle('correct', isCorrect);
 
       const input = document.getElementById('modalInput');
@@ -1413,7 +1465,6 @@
 
       document.getElementById('modalLetterBoxes').innerHTML =
         generateLetterBoxes(answerWord, value, isCorrect, lastInsertedIndex, true);
-      document.getElementById('modalIconsRow').style.display = isCorrect ? 'none' : 'flex';
       document.getElementById('cardModal').classList.toggle('correct', isCorrect);
 
       if (isCorrect) {
@@ -1450,6 +1501,25 @@
         });
         peekIcon.style.opacity = '1';
       }, 1500);
+    }
+
+    function resetModalAttempt(event) {
+      event.stopPropagation();
+      if (!activeModalCard) return;
+      const { setIdx, verbIdx } = activeModalCard;
+      const key = `${direction}-${setIdx}-${verbIdx}`;
+      delete userAnswers[key];
+
+      const verb = verbsData[setIdx].verbs[verbIdx];
+      const answerWord = getAnswer(verb);
+
+      document.getElementById('modalLetterBoxes').innerHTML =
+        generateLetterBoxes(answerWord, '', false, -1, true);
+      document.getElementById('cardModal').classList.remove('correct');
+
+      const input = document.getElementById('modalInput');
+      input.value = '';
+      input.focus({ preventScroll: true });
     }
     // --- end expanded card modal ---
 
