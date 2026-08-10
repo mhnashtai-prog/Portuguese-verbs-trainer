@@ -12,6 +12,13 @@
             "ele/ela": "lava",
             "nós": "lavamos",
             "vocês/eles/elas": "lavam"
+          },
+          "conjugations_en": {
+            "eu": "wash",
+            "tu": "wash",
+            "ele/ela": "washes",
+            "nós": "wash",
+            "vocês/eles/elas": "wash"
           }
         },
         {
@@ -23,6 +30,13 @@
             "ele/ela": "conduz",
             "nós": "conduzimos",
             "vocês/eles/elas": "conduzem"
+          },
+          "conjugations_en": {
+            "eu": "drive",
+            "tu": "drive",
+            "ele/ela": "drives",
+            "nós": "drive",
+            "vocês/eles/elas": "drive"
           }
         },
         {
@@ -34,6 +48,13 @@
             "ele/ela": "lê",
             "nós": "lemos",
             "vocês/eles/elas": "leem"
+          },
+          "conjugations_en": {
+            "eu": "read",
+            "tu": "read",
+            "ele/ela": "reads",
+            "nós": "read",
+            "vocês/eles/elas": "read"
           }
         },
         {
@@ -45,6 +66,13 @@
             "ele/ela": "escreve",
             "nós": "escrevemos",
             "vocês/eles/elas": "escrevem"
+          },
+          "conjugations_en": {
+            "eu": "write",
+            "tu": "write",
+            "ele/ela": "writes",
+            "nós": "write",
+            "vocês/eles/elas": "write"
           }
         },
         {
@@ -56,6 +84,13 @@
             "ele/ela": "come",
             "nós": "comemos",
             "vocês/eles/elas": "comem"
+          },
+          "conjugations_en": {
+            "eu": "eat",
+            "tu": "eat",
+            "ele/ela": "eats",
+            "nós": "eat",
+            "vocês/eles/elas": "eat"
           }
         },
         {
@@ -67,6 +102,13 @@
             "ele/ela": "bebe",
             "nós": "bebemos",
             "vocês/eles/elas": "bebem"
+          },
+          "conjugations_en": {
+            "eu": "drink",
+            "tu": "drink",
+            "ele/ela": "drinks",
+            "nós": "drink",
+            "vocês/eles/elas": "drink"
           }
         }
       ]
@@ -83,6 +125,13 @@
             "ele/ela": "dorme",
             "nós": "dormimos",
             "vocês/eles/elas": "dormem"
+          },
+          "conjugations_en": {
+            "eu": "sleep",
+            "tu": "sleep",
+            "ele/ela": "sleeps",
+            "nós": "sleep",
+            "vocês/eles/elas": "sleep"
           }
         },
         {
@@ -94,6 +143,13 @@
             "ele/ela": "corre",
             "nós": "corremos",
             "vocês/eles/elas": "correm"
+          },
+          "conjugations_en": {
+            "eu": "run",
+            "tu": "run",
+            "ele/ela": "runs",
+            "nós": "run",
+            "vocês/eles/elas": "run"
           }
         },
         {
@@ -105,6 +161,13 @@
             "ele/ela": "anda",
             "nós": "andamos",
             "vocês/eles/elas": "andam"
+          },
+          "conjugations_en": {
+            "eu": "walk",
+            "tu": "walk",
+            "ele/ela": "walks",
+            "nós": "walk",
+            "vocês/eles/elas": "walk"
           }
         },
         {
@@ -116,6 +179,13 @@
             "ele/ela": "fala",
             "nós": "falamos",
             "vocês/eles/elas": "falam"
+          },
+          "conjugations_en": {
+            "eu": "speak",
+            "tu": "speak",
+            "ele/ela": "speaks",
+            "nós": "speak",
+            "vocês/eles/elas": "speak"
           }
         },
         {
@@ -127,6 +197,13 @@
             "ele/ela": "ouve",
             "nós": "ouvimos",
             "vocês/eles/elas": "ouvem"
+          },
+          "conjugations_en": {
+            "eu": "listen",
+            "tu": "listen",
+            "ele/ela": "listens",
+            "nós": "listen",
+            "vocês/eles/elas": "listen"
           }
         },
         {
@@ -138,6 +215,13 @@
             "ele/ela": "vê",
             "nós": "vemos",
             "vocês/eles/elas": "veem"
+          },
+          "conjugations_en": {
+            "eu": "see",
+            "tu": "see",
+            "ele/ela": "sees",
+            "nós": "see",
+            "vocês/eles/elas": "see"
           }
         }
       ]
@@ -154,6 +238,13 @@
             "ele/ela": "compra",
             "nós": "compramos",
             "vocês/eles/elas": "compram"
+          },
+          "conjugations_en": {
+            "eu": "buy",
+            "tu": "buy",
+            "ele/ela": "buys",
+            "nós": "buy",
+            "vocês/eles/elas": "buy"
           }
         },
         {
@@ -165,6 +256,13 @@
             "ele/ela": "vende",
             "nós": "vendemos",
             "vocês/eles/elas": "vendem"
+          },
+          "conjugations_en": {
+            "eu": "sell",
+            "tu": "sell",
+            "ele/ela": "sells",
+            "nós": "sell",
+            "vocês/eles/elas": "sell"
           }
         },
         {
@@ -176,6 +274,13 @@
             "ele/ela": "abre",
             "nós": "abrimos",
             "vocês/eles/elas": "abrem"
+          },
+          "conjugations_en": {
+            "eu": "open",
+            "tu": "open",
+            "ele/ela": "opens",
+            "nós": "open",
+            "vocês/eles/elas": "open"
           }
         },
         {
@@ -187,6 +292,13 @@
             "ele/ela": "fecha",
             "nós": "fechamos",
             "vocês/eles/elas": "fecham"
+          },
+          "conjugations_en": {
+            "eu": "close",
+            "tu": "close",
+            "ele/ela": "closes",
+            "nós": "close",
+            "vocês/eles/elas": "close"
           }
         },
         {
@@ -198,6 +310,13 @@
             "ele/ela": "começa",
             "nós": "começamos",
             "vocês/eles/elas": "começam"
+          },
+          "conjugations_en": {
+            "eu": "start",
+            "tu": "start",
+            "ele/ela": "starts",
+            "nós": "start",
+            "vocês/eles/elas": "start"
           }
         },
         {
@@ -209,6 +328,13 @@
             "ele/ela": "termina",
             "nós": "terminamos",
             "vocês/eles/elas": "terminam"
+          },
+          "conjugations_en": {
+            "eu": "finish",
+            "tu": "finish",
+            "ele/ela": "finishes",
+            "nós": "finish",
+            "vocês/eles/elas": "finish"
           }
         }
       ]
@@ -225,6 +351,13 @@
             "ele/ela": "aprende",
             "nós": "aprendemos",
             "vocês/eles/elas": "aprendem"
+          },
+          "conjugations_en": {
+            "eu": "learn",
+            "tu": "learn",
+            "ele/ela": "learns",
+            "nós": "learn",
+            "vocês/eles/elas": "learn"
           }
         },
         {
@@ -236,6 +369,13 @@
             "ele/ela": "ensina",
             "nós": "ensinamos",
             "vocês/eles/elas": "ensinam"
+          },
+          "conjugations_en": {
+            "eu": "teach",
+            "tu": "teach",
+            "ele/ela": "teaches",
+            "nós": "teach",
+            "vocês/eles/elas": "teach"
           }
         },
         {
@@ -247,6 +387,13 @@
             "ele/ela": "estuda",
             "nós": "estudamos",
             "vocês/eles/elas": "estudam"
+          },
+          "conjugations_en": {
+            "eu": "study",
+            "tu": "study",
+            "ele/ela": "studies",
+            "nós": "study",
+            "vocês/eles/elas": "study"
           }
         },
         {
@@ -258,6 +405,13 @@
             "ele/ela": "trabalha",
             "nós": "trabalhamos",
             "vocês/eles/elas": "trabalham"
+          },
+          "conjugations_en": {
+            "eu": "work",
+            "tu": "work",
+            "ele/ela": "works",
+            "nós": "work",
+            "vocês/eles/elas": "work"
           }
         },
         {
@@ -269,6 +423,13 @@
             "ele/ela": "joga",
             "nós": "jogamos",
             "vocês/eles/elas": "jogam"
+          },
+          "conjugations_en": {
+            "eu": "play",
+            "tu": "play",
+            "ele/ela": "plays",
+            "nós": "play",
+            "vocês/eles/elas": "play"
           }
         },
         {
@@ -280,6 +441,13 @@
             "ele/ela": "dança",
             "nós": "dançamos",
             "vocês/eles/elas": "dançam"
+          },
+          "conjugations_en": {
+            "eu": "dance",
+            "tu": "dance",
+            "ele/ela": "dances",
+            "nós": "dance",
+            "vocês/eles/elas": "dance"
           }
         }
       ]
@@ -296,6 +464,13 @@
             "ele/ela": "canta",
             "nós": "cantamos",
             "vocês/eles/elas": "cantam"
+          },
+          "conjugations_en": {
+            "eu": "sing",
+            "tu": "sing",
+            "ele/ela": "sings",
+            "nós": "sing",
+            "vocês/eles/elas": "sing"
           }
         },
         {
@@ -307,6 +482,13 @@
             "ele/ela": "chora",
             "nós": "choramos",
             "vocês/eles/elas": "choram"
+          },
+          "conjugations_en": {
+            "eu": "cry",
+            "tu": "cry",
+            "ele/ela": "cries",
+            "nós": "cry",
+            "vocês/eles/elas": "cry"
           }
         },
         {
@@ -318,6 +500,13 @@
             "ele/ela": "ri",
             "nós": "rimos",
             "vocês/eles/elas": "riem"
+          },
+          "conjugations_en": {
+            "eu": "laugh",
+            "tu": "laugh",
+            "ele/ela": "laughs",
+            "nós": "laugh",
+            "vocês/eles/elas": "laugh"
           }
         },
         {
@@ -329,6 +518,13 @@
             "ele/ela": "sorri",
             "nós": "sorrimos",
             "vocês/eles/elas": "sorriem"
+          },
+          "conjugations_en": {
+            "eu": "smile",
+            "tu": "smile",
+            "ele/ela": "smiles",
+            "nós": "smile",
+            "vocês/eles/elas": "smile"
           }
         },
         {
@@ -340,6 +536,13 @@
             "ele/ela": "pensa",
             "nós": "pensamos",
             "vocês/eles/elas": "pensam"
+          },
+          "conjugations_en": {
+            "eu": "think",
+            "tu": "think",
+            "ele/ela": "thinks",
+            "nós": "think",
+            "vocês/eles/elas": "think"
           }
         },
         {
@@ -351,6 +554,13 @@
             "ele/ela": "sabe",
             "nós": "sabemos",
             "vocês/eles/elas": "sabem"
+          },
+          "conjugations_en": {
+            "eu": "know",
+            "tu": "know",
+            "ele/ela": "knows",
+            "nós": "know",
+            "vocês/eles/elas": "know"
           }
         }
       ]
@@ -367,6 +577,13 @@
             "ele/ela": "quer",
             "nós": "queremos",
             "vocês/eles/elas": "querem"
+          },
+          "conjugations_en": {
+            "eu": "want",
+            "tu": "want",
+            "ele/ela": "wants",
+            "nós": "want",
+            "vocês/eles/elas": "want"
           }
         },
         {
@@ -378,6 +595,13 @@
             "ele/ela": "precisa",
             "nós": "precisamos",
             "vocês/eles/elas": "precisam"
+          },
+          "conjugations_en": {
+            "eu": "need",
+            "tu": "need",
+            "ele/ela": "needs",
+            "nós": "need",
+            "vocês/eles/elas": "need"
           }
         },
         {
@@ -389,6 +613,13 @@
             "ele/ela": "gosta",
             "nós": "gostamos",
             "vocês/eles/elas": "gostam"
+          },
+          "conjugations_en": {
+            "eu": "like",
+            "tu": "like",
+            "ele/ela": "likes",
+            "nós": "like",
+            "vocês/eles/elas": "like"
           }
         },
         {
@@ -400,6 +631,13 @@
             "ele/ela": "ama",
             "nós": "amamos",
             "vocês/eles/elas": "amam"
+          },
+          "conjugations_en": {
+            "eu": "love",
+            "tu": "love",
+            "ele/ela": "loves",
+            "nós": "love",
+            "vocês/eles/elas": "love"
           }
         },
         {
@@ -411,6 +649,13 @@
             "ele/ela": "odeia",
             "nós": "odiamos",
             "vocês/eles/elas": "odeiam"
+          },
+          "conjugations_en": {
+            "eu": "hate",
+            "tu": "hate",
+            "ele/ela": "hates",
+            "nós": "hate",
+            "vocês/eles/elas": "hate"
           }
         },
         {
@@ -422,6 +667,13 @@
             "ele/ela": "prefere",
             "nós": "preferimos",
             "vocês/eles/elas": "preferem"
+          },
+          "conjugations_en": {
+            "eu": "prefer",
+            "tu": "prefer",
+            "ele/ela": "prefers",
+            "nós": "prefer",
+            "vocês/eles/elas": "prefer"
           }
         }
       ]
@@ -438,6 +690,13 @@
             "ele/ela": "dá",
             "nós": "damos",
             "vocês/eles/elas": "dão"
+          },
+          "conjugations_en": {
+            "eu": "give",
+            "tu": "give",
+            "ele/ela": "gives",
+            "nós": "give",
+            "vocês/eles/elas": "give"
           }
         },
         {
@@ -449,6 +708,13 @@
             "ele/ela": "toma",
             "nós": "tomamos",
             "vocês/eles/elas": "tomam"
+          },
+          "conjugations_en": {
+            "eu": "take",
+            "tu": "take",
+            "ele/ela": "takes",
+            "nós": "take",
+            "vocês/eles/elas": "take"
           }
         },
         {
@@ -460,6 +726,13 @@
             "ele/ela": "traz",
             "nós": "trazemos",
             "vocês/eles/elas": "trazem"
+          },
+          "conjugations_en": {
+            "eu": "bring",
+            "tu": "bring",
+            "ele/ela": "brings",
+            "nós": "bring",
+            "vocês/eles/elas": "bring"
           }
         },
         {
@@ -471,6 +744,13 @@
             "ele/ela": "leva",
             "nós": "levamos",
             "vocês/eles/elas": "levam"
+          },
+          "conjugations_en": {
+            "eu": "carry",
+            "tu": "carry",
+            "ele/ela": "carries",
+            "nós": "carry",
+            "vocês/eles/elas": "carry"
           }
         },
         {
@@ -482,6 +762,13 @@
             "ele/ela": "põe",
             "nós": "pomos",
             "vocês/eles/elas": "põem"
+          },
+          "conjugations_en": {
+            "eu": "put",
+            "tu": "put",
+            "ele/ela": "puts",
+            "nós": "put",
+            "vocês/eles/elas": "put"
           }
         },
         {
@@ -493,6 +780,13 @@
             "ele/ela": "obtém",
             "nós": "obtemos",
             "vocês/eles/elas": "obtêm"
+          },
+          "conjugations_en": {
+            "eu": "get",
+            "tu": "get",
+            "ele/ela": "gets",
+            "nós": "get",
+            "vocês/eles/elas": "get"
           }
         }
       ]
@@ -509,6 +803,13 @@
             "ele/ela": "faz",
             "nós": "fazemos",
             "vocês/eles/elas": "fazem"
+          },
+          "conjugations_en": {
+            "eu": "make",
+            "tu": "make",
+            "ele/ela": "makes",
+            "nós": "make",
+            "vocês/eles/elas": "make"
           }
         },
         {
@@ -520,6 +821,13 @@
             "ele/ela": "faz",
             "nós": "fazemos",
             "vocês/eles/elas": "fazem"
+          },
+          "conjugations_en": {
+            "eu": "do",
+            "tu": "do",
+            "ele/ela": "does",
+            "nós": "do",
+            "vocês/eles/elas": "do"
           }
         },
         {
@@ -531,6 +839,13 @@
             "ele/ela": "cria",
             "nós": "criamos",
             "vocês/eles/elas": "criam"
+          },
+          "conjugations_en": {
+            "eu": "create",
+            "tu": "create",
+            "ele/ela": "creates",
+            "nós": "create",
+            "vocês/eles/elas": "create"
           }
         },
         {
@@ -542,6 +857,13 @@
             "ele/ela": "constrói",
             "nós": "construímos",
             "vocês/eles/elas": "constroem"
+          },
+          "conjugations_en": {
+            "eu": "build",
+            "tu": "build",
+            "ele/ela": "builds",
+            "nós": "build",
+            "vocês/eles/elas": "build"
           }
         },
         {
@@ -553,6 +875,13 @@
             "ele/ela": "destrói",
             "nós": "destruímos",
             "vocês/eles/elas": "destroem"
+          },
+          "conjugations_en": {
+            "eu": "destroy",
+            "tu": "destroy",
+            "ele/ela": "destroys",
+            "nós": "destroy",
+            "vocês/eles/elas": "destroy"
           }
         },
         {
@@ -564,6 +893,13 @@
             "ele/ela": "quebra",
             "nós": "quebramos",
             "vocês/eles/elas": "quebram"
+          },
+          "conjugations_en": {
+            "eu": "break",
+            "tu": "break",
+            "ele/ela": "breaks",
+            "nós": "break",
+            "vocês/eles/elas": "break"
           }
         }
       ]
@@ -580,6 +916,13 @@
             "ele/ela": "encontra",
             "nós": "encontramos",
             "vocês/eles/elas": "encontram"
+          },
+          "conjugations_en": {
+            "eu": "find",
+            "tu": "find",
+            "ele/ela": "finds",
+            "nós": "find",
+            "vocês/eles/elas": "find"
           }
         },
         {
@@ -591,6 +934,13 @@
             "ele/ela": "perde",
             "nós": "perdemos",
             "vocês/eles/elas": "perdem"
+          },
+          "conjugations_en": {
+            "eu": "lose",
+            "tu": "lose",
+            "ele/ela": "loses",
+            "nós": "lose",
+            "vocês/eles/elas": "lose"
           }
         },
         {
@@ -602,6 +952,13 @@
             "ele/ela": "procura",
             "nós": "procuramos",
             "vocês/eles/elas": "procuram"
+          },
+          "conjugations_en": {
+            "eu": "search",
+            "tu": "search",
+            "ele/ela": "searches",
+            "nós": "search",
+            "vocês/eles/elas": "search"
           }
         },
         {
@@ -613,6 +970,13 @@
             "ele/ela": "olha",
             "nós": "olhamos",
             "vocês/eles/elas": "olham"
+          },
+          "conjugations_en": {
+            "eu": "look",
+            "tu": "look",
+            "ele/ela": "looks",
+            "nós": "look",
+            "vocês/eles/elas": "look"
           }
         },
         {
@@ -624,6 +988,13 @@
             "ele/ela": "assiste",
             "nós": "assistimos",
             "vocês/eles/elas": "assistem"
+          },
+          "conjugations_en": {
+            "eu": "watch",
+            "tu": "watch",
+            "ele/ela": "watches",
+            "nós": "watch",
+            "vocês/eles/elas": "watch"
           }
         },
         {
@@ -635,6 +1006,13 @@
             "ele/ela": "espera",
             "nós": "esperamos",
             "vocês/eles/elas": "esperam"
+          },
+          "conjugations_en": {
+            "eu": "wait",
+            "tu": "wait",
+            "ele/ela": "waits",
+            "nós": "wait",
+            "vocês/eles/elas": "wait"
           }
         }
       ]
@@ -651,6 +1029,13 @@
             "ele/ela": "chega",
             "nós": "chegamos",
             "vocês/eles/elas": "chegam"
+          },
+          "conjugations_en": {
+            "eu": "arrive",
+            "tu": "arrive",
+            "ele/ela": "arrives",
+            "nós": "arrive",
+            "vocês/eles/elas": "arrive"
           }
         },
         {
@@ -662,6 +1047,13 @@
             "ele/ela": "sai",
             "nós": "saímos",
             "vocês/eles/elas": "saem"
+          },
+          "conjugations_en": {
+            "eu": "leave",
+            "tu": "leave",
+            "ele/ela": "leaves",
+            "nós": "leave",
+            "vocês/eles/elas": "leave"
           }
         },
         {
@@ -673,6 +1065,13 @@
             "ele/ela": "entra",
             "nós": "entramos",
             "vocês/eles/elas": "entram"
+          },
+          "conjugations_en": {
+            "eu": "enter",
+            "tu": "enter",
+            "ele/ela": "enters",
+            "nós": "enter",
+            "vocês/eles/elas": "enter"
           }
         },
         {
@@ -684,6 +1083,13 @@
             "ele/ela": "sai",
             "nós": "saímos",
             "vocês/eles/elas": "saem"
+          },
+          "conjugations_en": {
+            "eu": "exit",
+            "tu": "exit",
+            "ele/ela": "exits",
+            "nós": "exit",
+            "vocês/eles/elas": "exit"
           }
         },
         {
@@ -695,6 +1101,13 @@
             "ele/ela": "volta",
             "nós": "voltamos",
             "vocês/eles/elas": "voltam"
+          },
+          "conjugations_en": {
+            "eu": "return",
+            "tu": "return",
+            "ele/ela": "returns",
+            "nós": "return",
+            "vocês/eles/elas": "return"
           }
         },
         {
@@ -706,6 +1119,13 @@
             "ele/ela": "vai",
             "nós": "vamos",
             "vocês/eles/elas": "vão"
+          },
+          "conjugations_en": {
+            "eu": "go",
+            "tu": "go",
+            "ele/ela": "goes",
+            "nós": "go",
+            "vocês/eles/elas": "go"
           }
         }
       ]
@@ -722,6 +1142,13 @@
             "ele/ela": "vem",
             "nós": "vimos",
             "vocês/eles/elas": "vêm"
+          },
+          "conjugations_en": {
+            "eu": "come",
+            "tu": "come",
+            "ele/ela": "comes",
+            "nós": "come",
+            "vocês/eles/elas": "come"
           }
         },
         {
@@ -733,6 +1160,13 @@
             "ele/ela": "fica",
             "nós": "ficamos",
             "vocês/eles/elas": "ficam"
+          },
+          "conjugations_en": {
+            "eu": "stay",
+            "tu": "stay",
+            "ele/ela": "stays",
+            "nós": "stay",
+            "vocês/eles/elas": "stay"
           }
         },
         {
@@ -744,6 +1178,13 @@
             "ele/ela": "vive",
             "nós": "vivemos",
             "vocês/eles/elas": "vivem"
+          },
+          "conjugations_en": {
+            "eu": "live",
+            "tu": "live",
+            "ele/ela": "lives",
+            "nós": "live",
+            "vocês/eles/elas": "live"
           }
         },
         {
@@ -755,6 +1196,13 @@
             "ele/ela": "morre",
             "nós": "morremos",
             "vocês/eles/elas": "morrem"
+          },
+          "conjugations_en": {
+            "eu": "die",
+            "tu": "die",
+            "ele/ela": "dies",
+            "nós": "die",
+            "vocês/eles/elas": "die"
           }
         },
         {
@@ -766,6 +1214,13 @@
             "ele/ela": "é",
             "nós": "somos",
             "vocês/eles/elas": "são"
+          },
+          "conjugations_en": {
+            "eu": "am",
+            "tu": "are",
+            "ele/ela": "is",
+            "nós": "are",
+            "vocês/eles/elas": "are"
           }
         },
         {
@@ -777,6 +1232,13 @@
             "ele/ela": "tem",
             "nós": "temos",
             "vocês/eles/elas": "têm"
+          },
+          "conjugations_en": {
+            "eu": "have",
+            "tu": "have",
+            "ele/ela": "has",
+            "nós": "have",
+            "vocês/eles/elas": "have"
           }
         }
       ]
@@ -793,6 +1255,13 @@
             "ele/ela": "diz",
             "nós": "dizemos",
             "vocês/eles/elas": "dizem"
+          },
+          "conjugations_en": {
+            "eu": "say",
+            "tu": "say",
+            "ele/ela": "says",
+            "nós": "say",
+            "vocês/eles/elas": "say"
           }
         },
         {
@@ -804,6 +1273,13 @@
             "ele/ela": "conta",
             "nós": "contamos",
             "vocês/eles/elas": "contam"
+          },
+          "conjugations_en": {
+            "eu": "tell",
+            "tu": "tell",
+            "ele/ela": "tells",
+            "nós": "tell",
+            "vocês/eles/elas": "tell"
           }
         },
         {
@@ -815,6 +1291,13 @@
             "ele/ela": "pergunta",
             "nós": "perguntamos",
             "vocês/eles/elas": "perguntam"
+          },
+          "conjugations_en": {
+            "eu": "ask",
+            "tu": "ask",
+            "ele/ela": "asks",
+            "nós": "ask",
+            "vocês/eles/elas": "ask"
           }
         },
         {
@@ -826,6 +1309,13 @@
             "ele/ela": "responde",
             "nós": "respondemos",
             "vocês/eles/elas": "respondem"
+          },
+          "conjugations_en": {
+            "eu": "answer",
+            "tu": "answer",
+            "ele/ela": "answers",
+            "nós": "answer",
+            "vocês/eles/elas": "answer"
           }
         },
         {
@@ -837,6 +1327,13 @@
             "ele/ela": "chama",
             "nós": "chamamos",
             "vocês/eles/elas": "chamam"
+          },
+          "conjugations_en": {
+            "eu": "call",
+            "tu": "call",
+            "ele/ela": "calls",
+            "nós": "call",
+            "vocês/eles/elas": "call"
           }
         },
         {
@@ -848,6 +1345,13 @@
             "ele/ela": "grita",
             "nós": "gritamos",
             "vocês/eles/elas": "gritam"
+          },
+          "conjugations_en": {
+            "eu": "shout",
+            "tu": "shout",
+            "ele/ela": "shouts",
+            "nós": "shout",
+            "vocês/eles/elas": "shout"
           }
         }
       ]
@@ -864,6 +1368,13 @@
             "ele/ela": "ajuda",
             "nós": "ajudamos",
             "vocês/eles/elas": "ajudam"
+          },
+          "conjugations_en": {
+            "eu": "help",
+            "tu": "help",
+            "ele/ela": "helps",
+            "nós": "help",
+            "vocês/eles/elas": "help"
           }
         },
         {
@@ -875,6 +1386,13 @@
             "ele/ela": "salva",
             "nós": "salvamos",
             "vocês/eles/elas": "salvam"
+          },
+          "conjugations_en": {
+            "eu": "save",
+            "tu": "save",
+            "ele/ela": "saves",
+            "nós": "save",
+            "vocês/eles/elas": "save"
           }
         },
         {
@@ -886,6 +1404,13 @@
             "ele/ela": "protege",
             "nós": "protegemos",
             "vocês/eles/elas": "protegem"
+          },
+          "conjugations_en": {
+            "eu": "protect",
+            "tu": "protect",
+            "ele/ela": "protects",
+            "nós": "protect",
+            "vocês/eles/elas": "protect"
           }
         },
         {
@@ -897,6 +1422,13 @@
             "ele/ela": "defende",
             "nós": "defendemos",
             "vocês/eles/elas": "defendem"
+          },
+          "conjugations_en": {
+            "eu": "defend",
+            "tu": "defend",
+            "ele/ela": "defends",
+            "nós": "defend",
+            "vocês/eles/elas": "defend"
           }
         },
         {
@@ -908,6 +1440,13 @@
             "ele/ela": "ataca",
             "nós": "atacamos",
             "vocês/eles/elas": "atacam"
+          },
+          "conjugations_en": {
+            "eu": "attack",
+            "tu": "attack",
+            "ele/ela": "attacks",
+            "nós": "attack",
+            "vocês/eles/elas": "attack"
           }
         },
         {
@@ -919,6 +1458,13 @@
             "ele/ela": "luta",
             "nós": "lutamos",
             "vocês/eles/elas": "lutam"
+          },
+          "conjugations_en": {
+            "eu": "fight",
+            "tu": "fight",
+            "ele/ela": "fights",
+            "nós": "fight",
+            "vocês/eles/elas": "fight"
           }
         }
       ]
@@ -935,6 +1481,13 @@
             "ele/ela": "ganha",
             "nós": "ganhamos",
             "vocês/eles/elas": "ganham"
+          },
+          "conjugations_en": {
+            "eu": "win",
+            "tu": "win",
+            "ele/ela": "wins",
+            "nós": "win",
+            "vocês/eles/elas": "win"
           }
         },
         {
@@ -946,6 +1499,13 @@
             "ele/ela": "falha",
             "nós": "falhamos",
             "vocês/eles/elas": "falham"
+          },
+          "conjugations_en": {
+            "eu": "fail",
+            "tu": "fail",
+            "ele/ela": "fails",
+            "nós": "fail",
+            "vocês/eles/elas": "fail"
           }
         },
         {
@@ -957,6 +1517,13 @@
             "ele/ela": "tenta",
             "nós": "tentamos",
             "vocês/eles/elas": "tentam"
+          },
+          "conjugations_en": {
+            "eu": "try",
+            "tu": "try",
+            "ele/ela": "tries",
+            "nós": "try",
+            "vocês/eles/elas": "try"
           }
         },
         {
@@ -968,6 +1535,13 @@
             "ele/ela": "consegue",
             "nós": "conseguimos",
             "vocês/eles/elas": "conseguem"
+          },
+          "conjugations_en": {
+            "eu": "succeed",
+            "tu": "succeed",
+            "ele/ela": "succeeds",
+            "nós": "succeed",
+            "vocês/eles/elas": "succeed"
           }
         },
         {
@@ -979,6 +1553,13 @@
             "ele/ela": "melhora",
             "nós": "melhoramos",
             "vocês/eles/elas": "melhoram"
+          },
+          "conjugations_en": {
+            "eu": "improve",
+            "tu": "improve",
+            "ele/ela": "improves",
+            "nós": "improve",
+            "vocês/eles/elas": "improve"
           }
         },
         {
@@ -990,6 +1571,13 @@
             "ele/ela": "muda",
             "nós": "mudamos",
             "vocês/eles/elas": "mudam"
+          },
+          "conjugations_en": {
+            "eu": "change",
+            "tu": "change",
+            "ele/ela": "changes",
+            "nós": "change",
+            "vocês/eles/elas": "change"
           }
         }
       ]
@@ -1006,6 +1594,13 @@
             "ele/ela": "cresce",
             "nós": "crescemos",
             "vocês/eles/elas": "crescem"
+          },
+          "conjugations_en": {
+            "eu": "grow",
+            "tu": "grow",
+            "ele/ela": "grows",
+            "nós": "grow",
+            "vocês/eles/elas": "grow"
           }
         },
         {
@@ -1017,6 +1612,13 @@
             "ele/ela": "cai",
             "nós": "caímos",
             "vocês/eles/elas": "caem"
+          },
+          "conjugations_en": {
+            "eu": "fall",
+            "tu": "fall",
+            "ele/ela": "falls",
+            "nós": "fall",
+            "vocês/eles/elas": "fall"
           }
         },
         {
@@ -1028,6 +1630,13 @@
             "ele/ela": "sobe",
             "nós": "subimos",
             "vocês/eles/elas": "sobem"
+          },
+          "conjugations_en": {
+            "eu": "rise",
+            "tu": "rise",
+            "ele/ela": "rises",
+            "nós": "rise",
+            "vocês/eles/elas": "rise"
           }
         },
         {
@@ -1039,6 +1648,13 @@
             "ele/ela": "escala",
             "nós": "escalamos",
             "vocês/eles/elas": "escalam"
+          },
+          "conjugations_en": {
+            "eu": "climb",
+            "tu": "climb",
+            "ele/ela": "climbs",
+            "nós": "climb",
+            "vocês/eles/elas": "climb"
           }
         },
         {
@@ -1050,6 +1666,13 @@
             "ele/ela": "salta",
             "nós": "saltamos",
             "vocês/eles/elas": "saltam"
+          },
+          "conjugations_en": {
+            "eu": "jump",
+            "tu": "jump",
+            "ele/ela": "jumps",
+            "nós": "jump",
+            "vocês/eles/elas": "jump"
           }
         },
         {
@@ -1061,6 +1684,13 @@
             "ele/ela": "voa",
             "nós": "voamos",
             "vocês/eles/elas": "voam"
+          },
+          "conjugations_en": {
+            "eu": "fly",
+            "tu": "fly",
+            "ele/ela": "flies",
+            "nós": "fly",
+            "vocês/eles/elas": "fly"
           }
         }
       ]
@@ -1077,6 +1707,13 @@
             "ele/ela": "nada",
             "nós": "nadamos",
             "vocês/eles/elas": "nadam"
+          },
+          "conjugations_en": {
+            "eu": "swim",
+            "tu": "swim",
+            "ele/ela": "swims",
+            "nós": "swim",
+            "vocês/eles/elas": "swim"
           }
         },
         {
@@ -1088,6 +1725,13 @@
             "ele/ela": "cozinha",
             "nós": "cozinhamos",
             "vocês/eles/elas": "cozinham"
+          },
+          "conjugations_en": {
+            "eu": "cook",
+            "tu": "cook",
+            "ele/ela": "cooks",
+            "nós": "cook",
+            "vocês/eles/elas": "cook"
           }
         },
         {
@@ -1099,6 +1743,13 @@
             "ele/ela": "limpa",
             "nós": "limpamos",
             "vocês/eles/elas": "limpam"
+          },
+          "conjugations_en": {
+            "eu": "clean",
+            "tu": "clean",
+            "ele/ela": "cleans",
+            "nós": "clean",
+            "vocês/eles/elas": "clean"
           }
         },
         {
@@ -1110,6 +1761,13 @@
             "ele/ela": "lava",
             "nós": "lavamos",
             "vocês/eles/elas": "lavam"
+          },
+          "conjugations_en": {
+            "eu": "wash",
+            "tu": "wash",
+            "ele/ela": "washes",
+            "nós": "wash",
+            "vocês/eles/elas": "wash"
           }
         },
         {
@@ -1121,6 +1779,13 @@
             "ele/ela": "corta",
             "nós": "cortamos",
             "vocês/eles/elas": "cortam"
+          },
+          "conjugations_en": {
+            "eu": "cut",
+            "tu": "cut",
+            "ele/ela": "cuts",
+            "nós": "cut",
+            "vocês/eles/elas": "cut"
           }
         },
         {
@@ -1132,6 +1797,13 @@
             "ele/ela": "pinta",
             "nós": "pintamos",
             "vocês/eles/elas": "pintam"
+          },
+          "conjugations_en": {
+            "eu": "paint",
+            "tu": "paint",
+            "ele/ela": "paints",
+            "nós": "paint",
+            "vocês/eles/elas": "paint"
           }
         }
       ]
@@ -1148,6 +1820,13 @@
             "ele/ela": "desenha",
             "nós": "desenhamos",
             "vocês/eles/elas": "desenham"
+          },
+          "conjugations_en": {
+            "eu": "draw",
+            "tu": "draw",
+            "ele/ela": "draws",
+            "nós": "draw",
+            "vocês/eles/elas": "draw"
           }
         },
         {
@@ -1159,6 +1838,13 @@
             "ele/ela": "escreve",
             "nós": "escrevemos",
             "vocês/eles/elas": "escrevem"
+          },
+          "conjugations_en": {
+            "eu": "write",
+            "tu": "write",
+            "ele/ela": "writes",
+            "nós": "write",
+            "vocês/eles/elas": "write"
           }
         },
         {
@@ -1170,6 +1856,13 @@
             "ele/ela": "lembra",
             "nós": "lembramos",
             "vocês/eles/elas": "lembram"
+          },
+          "conjugations_en": {
+            "eu": "remember",
+            "tu": "remember",
+            "ele/ela": "remembers",
+            "nós": "remember",
+            "vocês/eles/elas": "remember"
           }
         },
         {
@@ -1181,6 +1874,13 @@
             "ele/ela": "esquece",
             "nós": "esquecemos",
             "vocês/eles/elas": "esquecem"
+          },
+          "conjugations_en": {
+            "eu": "forget",
+            "tu": "forget",
+            "ele/ela": "forgets",
+            "nós": "forget",
+            "vocês/eles/elas": "forget"
           }
         }
       ]
