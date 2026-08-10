@@ -1016,7 +1016,7 @@
     let currentFocusedInput = null;
     let direction = 'en-pt'; // 'en-pt' = see English, type Portuguese. 'pt-en' = see Portuguese, type English.
     let activeModalCard = null; // { setIdx, verbIdx }
-    const DATA_VERSION = '2'; // bump this whenever portuguese-verbs.json changes, to bust the browser/CDN cache
+    const DATA_VERSION = '3'; // bump this whenever portuguese-verbs.json changes, to bust the browser/CDN cache
 
     async function loadVerbsData() {
       try {
@@ -1260,14 +1260,22 @@
       listContainer.innerHTML = '';
       
       const pronounOrder = ['eu', 'tu', 'ele/ela', 'nós', 'vocês/eles/elas'];
+      const pronounLabelsEn = {
+        'eu': 'I',
+        'tu': 'you',
+        'ele/ela': 'he/she',
+        'nós': 'we',
+        'vocês/eles/elas': 'they'
+      };
       const conjugationSet = direction === 'en-pt' ? verb.conjugations : verb.conjugations_en;
       
       pronounOrder.forEach(pronoun => {
         if (conjugationSet && conjugationSet[pronoun]) {
+          const label = direction === 'en-pt' ? pronoun : pronounLabelsEn[pronoun];
           const row = document.createElement('div');
           row.className = 'conjugation-row';
           row.innerHTML = `
-            <div class="pronoun">${pronoun}</div>
+            <div class="pronoun">${label}</div>
             <div class="conjugated-form">${conjugationSet[pronoun]}</div>
           `;
           listContainer.appendChild(row);
